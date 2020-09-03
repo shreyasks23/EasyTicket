@@ -1,0 +1,111 @@
+[
+    {
+        "project": "GMAC",
+        "TicketID": "GOS-123",
+        "Summary": "need details",
+        "RecievedDate": "05/10/2020 09:44 AM",
+        "ResolvedDate": "05/10/2020 10:42 AM",
+        "Status": "In Progress",
+        "Priority": "P2 - High",
+        "Severity": "P4 - Low"
+    },
+    {
+        "project": "GMAC",
+        "TicketID": "GOS-124",
+        "Summary": "need more details",
+        "RecievedDate": "05/10/2020 09:44 PM",
+        "ResolvedDate": "05/11/2020 10:42 AM",
+        "Status": "Open",
+        "Priority": "P2 - High",
+        "Severity": "P4 - Low",
+        "ResolutionTime": "22:30:40"
+    },
+    {
+        "project": "CLP",
+        "TicketID": "CS-123",
+        "Summary": "need CLP details",
+        "RecievedDate": "05/10/2020 09:44 AM",
+        "ResolvedDate": "05/10/2020 10:42 AM",
+        "Status": "In Progress",
+        "Priority": "P2 - High",
+        "Severity": "P4 - Low",
+        "ResolutionTime": ""
+    },
+    {
+        "project": "OUPI",
+        "TicketID": "12349",
+        "Summary": "need OUPI details",
+        "RecievedDate": "05/11/2020 09:44 AM",
+        "ResolvedDate": "05/15/2020 10:42 AM",
+        "Status": "Resolved",
+        "Priority": "P2 - High",
+        "Severity": "P2 - High",
+        "ResolutionTime": ""
+    },
+    {
+        "project": "GMAC",
+        "TicketID": "12345",
+        "Summary": "summary",
+        "RecievedDate": "2020-05-10T16:14:00.000Z",
+        "ResolvedDate": "2020-05-10T16:28:00.000Z",
+        "Status": "In Progress",
+        "Priority": "P2 - High",
+        "Severity": "P2 - High",
+        "ResolutionTime": "0:14:0"
+    },
+    {
+        "project": "GMAC",
+        "TicketID": "123",
+        "Summary": "summary here",
+        "RecievedDate": "2020-05-10T16:14:00.000Z",
+        "ResolvedDate": "2020-05-11T05:12:00.000Z",
+        "Status": "New",
+        "Priority": "P1 - Critical",
+        "Severity": "P1 - Critical",
+        "ResolutionTime": "12:58:0"
+    },
+    {
+        "project": "GMAC",
+        "TicketID": "123123",
+        "Summary": "summary here",
+        "RecievedDate": "2020-05-10T16:14:00.000Z",
+        "ResolvedDate": "2020-05-11T05:12:00.000Z",
+        "Status": "New",
+        "Priority": "P1 - Critical",
+        "Severity": "P1 - Critical",
+        "ResolutionTime": "12:58:0"
+    },
+    {
+        "project": "GMAC",
+        "TicketID": "1231231",
+        "Summary": "summary here",
+        "RecievedDate": "2020-05-10T16:14:00.000Z",
+        "ResolvedDate": "2020-05-11T17:12:00.000Z",
+        "Status": "New",
+        "Priority": "P1 - Critical",
+        "Severity": "P1 - Critical",
+        "ResolutionTime": "24:58:0"
+    },
+    {
+        "project": "GMAC",
+        "TicketID": "942",
+        "Summary": "this is final test summary",
+        "RecievedDate": "05/11/2020 09:44 AM",
+        "ResolvedDate": "05/12/2020 09:44 AM",
+        "Status": "New",
+        "Priority": "P1 - Critical",
+        "Severity": "P1 - Critical",
+        "ResolutionTime": "24:0:0"
+    },
+    {
+        "project": "OUPI",
+        "TicketID": "12435",
+        "Summary": "content usage report",
+        "RecievedDate": "06/13/2020 09:44",
+        "ResolvedDate": "06/13/2020 20:44",
+        "Status": "In Progress",
+        "Priority": "P2 - High",
+        "Severity": "P2 - High",
+        "ResolutionTime": "11:0:0"
+    }
+]
