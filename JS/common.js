@@ -49,15 +49,18 @@ $(function () {
                 data: JSON.stringify(ticket),
                 success: (data) => {
                     console.log(data);
-                    alert("this is test alert" + data);
+                    if (data == "0") {
+                        alert("Ticket added to the bottom");
+                        window.location.href='/GetAllTickets';                    }
                 },
                 error: (err) => {
                     console.log(err);
                 },
                 async:false
             });
-        }       
-
+        } 
+        
+        
     });    
 });
 

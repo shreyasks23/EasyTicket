@@ -1,90 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <link rel="stylesheet" href="/resources/bootstrapCSS">
-    <script src="/resources/Jquery"></script>
-    <script src="/resources/bootstrapJS"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket List</title>
-</head>
+    <head>
+        <link rel="stylesheet" href="/resources/bootstrapCSS">
+        <script src="/resources/Jquery"></script>
+        <script src="/resources/bootstrapJS"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ticket List</title>
+    </head>
 
-<body style="align-content: space-around;">
-    <div class="container p-3 my-3 border">
-        <div class="jumbotron">
-            <h2 class="display-4">Saras Production Incidents</h2>
-            <p class="lead">All ticket detials at a glance</p>
-            <a href="/Index" class="btn btn-primary btn-lg" style="float: right;">Enter new ticket</a>
+    <body id='MainBody' style="align-content: space-around;">
+        <div class="container p-3 my-3 border">
+            <div class="jumbotron">
+                <h2 class="display-4">Saras Production Incidents</h2>
+                <p class="lead">All ticket detials at a glance</p>
+                <a href="/Index" class="btn btn-primary btn-lg" style="float: right;">Enter new ticket</a>
+            </div>
+            <table id="tblTickets" class="table table-hover table-bordered table-responsive">
+            </table>
+            <a id="btnLoad" class="btn btn-success btn-lg" role="button">View tickets</a>
+            <!-- <button id="btnLoad" class="btn btn-secondary">Get all tickets</button> -->
         </div>
-        <table id="tblTickets" class="table table-hover table-bordered table-responsive">
-        </table>
-        <a id="btnLoad" class="btn btn-success btn-lg" role="button">View tickets</a>
-        <!-- <button id="btnLoad" class="btn btn-secondary">Get all tickets</button> -->
-    </div>
-    <script>
-        $("#btnLoad").on("click", () => {
-
+        <script> 
+        $(function(){
             $.ajax({
-                type: 'GET',
-                url: '/AllTickets',
-                success: (data) => {
-                    constructTable(data, "#tblTickets");
-                },
-                error: (err) => {
-                    console.log(err);
+                    type: 'GET',
+                    url: '/AllTickets',
+                    success: (data) => {
+                        $("#tblTickets").empty();
+                        constructTable(data, "#tblTickets");
+                    },
+                    error: (err) => {
+                        console.log(err);
+                    }
+                })
+        })           
+            // $("#MainBody").on("load", () => {
+
+            //     $.ajax({
+            //         type: 'GET',
+            //         url: '/AllTickets',
+            //         success: (data) => {
+            //             $("#tblTickets").empty();
+            //             constructTable(data, "#tblTickets");
+            //         },
+            //         error: (err) => {
+            //             console.log(err);
+            //         }
+            //     })
+            // })
+
+            function constructTable(list, selector) {
+
+                // Getting the all column names 
+                $(selector).empty();
+                var cols = Headers(list, selector);
+                var tbody = $('<tbody/>');
+
+                // Traversing the JSON data 
+                for (var i = 0; i < list.length; i++) {
+                    var row = $('<tr/>');
+                    for (var colIndex = 0; colIndex < cols.length; colIndex++) {
+                        var val = list[i][cols[colIndex]];
+                        // If there is any key, which is matching 
+                        // with the column name 
+                        if (val == null) val = "";
+                        row.append($('<td/>').html(val));
+                    }
+                    // Adding each row to the table 
+
+                    tbody.append(row);
                 }
-            })
-        })
-
-        function constructTable(list, selector) {
-
-            // Getting the all column names 
-            var cols = Headers(list, selector);
-            var tbody = $('<tbody/>');
-
-            // Traversing the JSON data 
-            for (var i = 0; i < list.length; i++) {
-                var row = $('<tr/>');
-                for (var colIndex = 0; colIndex < cols.length; colIndex++) {
-                    var val = list[i][cols[colIndex]];
-                    // If there is any key, which is matching 
-                    // with the column name 
-                    if (val == null) val = "";
-                    row.append($('<td/>').html(val));
-                }
-                // Adding each row to the table 
-                
-                tbody.append(row);                
+                $(selector).append(tbody);
             }
-            $(selector).append(tbody);
-        }
 
-        function Headers(list, selector) {
-            var columns = [];
-            var header = $('<tr/>');
+            function Headers(list, selector) {
+                var columns = [];
+                var header = $('<tr/>');
 
-            for (var i = 0; i < list.length; i++) {
-                var row = list[i];
+                for (var i = 0; i < list.length; i++) {
+                    var row = list[i];
 
-                for (var k in row) {
-                    if ($.inArray(k, columns) == -1) {
-                        columns.push(k);
+                    for (var k in row) {
+                        if ($.inArray(k, columns) == -1) {
+                            columns.push(k);
 
-                        // Creating the header 
-                        header.append($('<th/>').html(k));
+                            // Creating the header 
+                            header.append($('<th/>').html(k));
+                        }
                     }
                 }
+                var thead = $('<thead/>');
+                thead.append(header);
+                $(selector).append(thead);
+                // Appending the header to the table 
+                //thead.append(header);
+                //$(selector).append(header);
+                return columns;
             }
-            var thead = $('<thead/>');
-            thead.append(header);
-            $(selector).append(thead);
-            // Appending the header to the table 
-            //thead.append(header);
-            //$(selector).append(header);
-            return columns;
-        }  
-    </script>
-</body>
+            
+        </script>
+    </body>
 
 </html>
