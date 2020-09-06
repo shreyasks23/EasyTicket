@@ -107,5 +107,16 @@
         "Priority": "P2 - High",
         "Severity": "P2 - High",
         "ResolutionTime": "11:0:0"
+    },
+    {
+        "project": "GMAC",
+        "TicketID": "456",
+        "Summary": "summary",
+        "RecievedDate": "05/11/2020 09:44 AM",
+        "ResolvedDate": "05/12/2020 10:44 AM",
+        "Status": "New",
+        "Priority": "P1 - Critical",
+        "Severity": "P1 - Critical",
+        "ResolutionTime": "25:0:0"
     }
 ]

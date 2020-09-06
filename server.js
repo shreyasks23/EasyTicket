@@ -62,7 +62,7 @@ app.post('/AddTicket', jsonParser, (req, res) => {
 });
 
 app.get('/', function (req, res) {
-    fs.readFile(__dirname + "/" + "index.html", 'utf8', function (err, data) {
+    fs.readFile(__dirname + "/" + "ticketlist.html", 'utf8', function (err, data) {
         res.end(data);
     });
 });
