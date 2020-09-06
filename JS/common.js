@@ -11,15 +11,15 @@ $(function () {
         var ResolutionTime = diff_minutes(ResolvedDate, RecievedDate);
 
         let ticket = {
-            project: project
-            , TicketID: TicketID
-            , Summary: Summary
-            , RecievedDate: RecievedDate
-            , ResolvedDate: ResolvedDate
-            , Status: Status
-            , Priority: Priority
-            , Severity: Severity
-            , ResolutionTime: ResolutionTime
+            project: project,
+            TicketID: TicketID,
+            Summary: Summary,
+            RecievedDate: RecievedDate,
+            ResolvedDate: ResolvedDate,
+            Status: Status,
+            Priority: Priority,
+            Severity: Severity,
+            ResolutionTime: ResolutionTime
         };
         //console.log(ticket);
         let status = "";
@@ -27,7 +27,9 @@ $(function () {
             type: 'POST',
             contentType: 'application/json',
             url: '/CheckTicket',
-            data: JSON.stringify({ 'TicketID': TicketID }),
+            data: JSON.stringify({
+                'TicketID': TicketID
+            }),
             error: (err) => {
                 alert(err);
             },
@@ -36,32 +38,32 @@ $(function () {
                 let response = res;
                 console.log(response);
             },
-            async:false
+            async: false
         })
         if (status == "1") {
             alert("ticket with same ID is already present");
-        }
-        else {
+        } else {
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
                 url: '/AddTicket',
                 data: JSON.stringify(ticket),
-                success: (data) => {
-                    console.log(data);
-                    if (data == "0") {
-                        alert("Ticket added to the bottom");
-                        window.location.href='/GetAllTickets';                    }
+                success: (data, status) => {
+                    if (status == 'success') {
+                        console.log(data);
+                        alert("Ticket added");
+                        window.location.href = '/GetAllTickets';
+                    }
                 },
                 error: (err) => {
                     console.log(err);
                 },
-                async:false
+                async: false
             });
-        } 
-        
-        
-    });    
+        }
+
+
+    });
 });
 
 //#region helper methods
@@ -70,7 +72,7 @@ function diff_minutes(dt2, dt1) {
     let d1 = new Date(dt1);
     let d2 = new Date(dt2);
 
-      
+
     var diff = d2.getTime() - d1.getTime();
 
     var msec = diff;
@@ -83,4 +85,3 @@ function diff_minutes(dt2, dt1) {
     return hh + ":" + mm + ":" + ss;
 }
 //#endregion
-

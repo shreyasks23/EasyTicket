@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        <link rel="stylesheet" href="/resources/bootstrapCSS">
+        <link rel="stylesheet" href="/resources/bootstrapCSS" type="text/css">
         <script src="/resources/Jquery"></script>
         <script src="/resources/bootstrapJS"></script>
         <meta charset="UTF-8">
@@ -10,13 +10,16 @@
         <title>Ticket List</title>
     </head>
 
-    <body id='MainBody' style="align-content: space-around;">
+    <body style="align-content: space-around;">
         <div class="container p-3 my-3 border">
             <div class="jumbotron">
                 <h2 class="display-4">Saras Production Incidents</h2>
                 <p class="lead">All ticket detials at a glance</p>
-                <a href="/Index" class="btn btn-primary btn-lg" style="float: right;">Enter new ticket</a>
+                <a href="/Index" class="btn btn-primary btn-lg" style="float: right;">Enter new ticket</a>                
             </div>
+            <span id="CountHolder" style="float:right"></span></t>
+            <label for="CountHolder" style="float: right;">Total Tickets : </label>
+            
             <table id="tblTickets" class="table table-hover table-bordered table-responsive">
             </table>
             <a id="btnLoad" class="btn btn-success btn-lg" role="button">View tickets</a>
@@ -27,29 +30,19 @@
             $.ajax({
                     type: 'GET',
                     url: '/AllTickets',
-                    success: (data) => {
-                        $("#tblTickets").empty();
-                        constructTable(data, "#tblTickets");
+                    success: (data) => { 
+                        console.log(data);
+                        let Tickets = data.Tickets;
+                        let Count = data.Count;
+                        $("#CountHolder").text(Count);
+                        constructTable(Tickets, "#tblTickets");
                     },
                     error: (err) => {
                         console.log(err);
                     }
                 })
         })           
-            // $("#MainBody").on("load", () => {
-
-            //     $.ajax({
-            //         type: 'GET',
-            //         url: '/AllTickets',
-            //         success: (data) => {
-            //             $("#tblTickets").empty();
-            //             constructTable(data, "#tblTickets");
-            //         },
-            //         error: (err) => {
-            //             console.log(err);
-            //         }
-            //     })
-            // })
+           
 
             function constructTable(list, selector) {
 

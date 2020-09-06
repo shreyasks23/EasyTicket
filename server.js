@@ -49,16 +49,18 @@ app.post('/AddTicket', jsonParser, (req, res) => {
         let Tickets = [];
         Tickets = JSON.parse(data);
 
-        Tickets.push(ticket);
+        let count = Tickets.unshift(ticket);
+        console.log(count);
+        
         var jsonString = JSON.stringify(Tickets);
         fs.writeFile(__dirname + "/" + "tickets.json", jsonString, function (err) {
             if (err) throw err;
-            console.log('created!');
-            res.end("0");
+            console.log('created!');            
+            res.status('200').send(count.toString());         
         });
 
     });
-    //res.send(Tickets);
+    
 });
 
 app.get('/', function (req, res) {
@@ -90,7 +92,12 @@ app.get('/AllTickets', function (req, res) {
     fs.readFile(__dirname + "/" + "tickets.json", 'utf8', function (err, data) {
         var Tickets = [];
         Tickets = JSON.parse(data);
-        res.send(Tickets);
+        let TicketCount = Tickets.length;
+        let resObj = {
+            'Tickets': Tickets,
+            'Count' : TicketCount
+        }
+        res.send(resObj);
     });
 });
 
