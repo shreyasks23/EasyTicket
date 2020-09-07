@@ -4,11 +4,10 @@ const fs = require("fs");
 const bodyParser = require("body-parser");
 const path = require("path");
 
-//importing bootstrap and jquery files
+//importing required js files
 const resources = require("./resources");
 
-
-
+//app intialization
 const app = express();
 
 var jsonParser = bodyParser.json({
@@ -20,7 +19,6 @@ app.use(express.static(__dirname + '/bootstrap'));
 app.use("/resources", resources);
 
 //#region Routes
-
 app.post('/CheckTicket', jsonParser, (req, res) => {
     var TicketID = req.body.TicketID;
     fs.readFile(__dirname + "/" + "tickets.json", 'utf8', function (err, data) {
@@ -70,13 +68,13 @@ app.get('/', function (req, res) {
 });
 
 app.get('/Index', function (req, res) {
-    fs.readFile(__dirname + "/" + "index.html", 'utf8', function (err, data) {
+    fs.readFile(__dirname + "/" + "ticketlist.html", 'utf8', function (err, data) {
         res.end(data);
     });
 });
 
-app.get('/GetAllTickets', function (req, res) {
-    fs.readFile(__dirname + "/" + "ticketlist.html", 'utf8', function (err, data) {
+app.get('/AddTicket', function (req, res) {
+    fs.readFile(__dirname + "/" + "index.html", 'utf8', function (err, data) {
         res.end(data);
     });
 });
