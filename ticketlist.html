@@ -15,22 +15,23 @@
             <div class="jumbotron">
                 <h2 class="display-4">Saras Production Incidents</h2>
                 <p class="lead">All ticket detials at a glance</p>
-                <a href="/Index" class="btn btn-primary btn-lg" style="float: right;">Enter new ticket</a>                
+                <a href="/Index" class="btn btn-primary btn-lg" style="float: right;">Enter new ticket</a>
             </div>
-            <span id="CountHolder" style="float:right"></span></t>
-            <label for="CountHolder" style="float: right;">Total Tickets : </label>
-            
+            <div style="float:right">                
+                <label for="CountHolder" >Total Tickets : </label>
+                <span id="CountHolder" ></span></t>
+            </div>
             <table id="tblTickets" class="table table-hover table-bordered table-responsive">
             </table>
-            <a id="btnLoad" class="btn btn-success btn-lg" role="button">View tickets</a>
+            <!-- <a id="btnLoad" class="btn btn-success btn-lg" role="button">View tickets</a> -->
             <!-- <button id="btnLoad" class="btn btn-secondary">Get all tickets</button> -->
         </div>
-        <script> 
-        $(function(){
-            $.ajax({
+        <script>
+            $(function () {
+                $.ajax({
                     type: 'GET',
                     url: '/AllTickets',
-                    success: (data) => { 
+                    success: (data) => {
                         console.log(data);
                         let Tickets = data.Tickets;
                         let Count = data.Count;
@@ -41,8 +42,8 @@
                         console.log(err);
                     }
                 })
-        })           
-           
+            })
+
 
             function constructTable(list, selector) {
 
@@ -92,7 +93,6 @@
                 //$(selector).append(header);
                 return columns;
             }
-            
         </script>
     </body>
 
