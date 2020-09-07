@@ -21,7 +21,7 @@ $(function () {
             Severity: Severity,
             ResolutionTime: ResolutionTime
         };
-        //console.log(ticket);
+        
         let status = "";
         $.ajax({
             type: 'POST',

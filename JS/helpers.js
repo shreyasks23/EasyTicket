@@ -40,10 +40,7 @@ function Headers(list, selector) {
     }
     var thead = $('<thead/>');
     thead.append(header);
-    $(selector).append(thead);
-    // Appending the header to the table 
-    //thead.append(header);
-    //$(selector).append(header);
+    $(selector).append(thead);    
     return columns;
 }
 

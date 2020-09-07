@@ -79,13 +79,6 @@ app.get('/AddTicket', function (req, res) {
     });
 });
 
-
-app.get('/mainJS', function (req, res) {
-    fs.readFile(__dirname + "/JS/" + "index.js", 'utf8', function (err, data) {
-        res.end(data);
-    });
-});
-
 app.get('/AllTickets', function (req, res) {
     fs.readFile(__dirname + "/" + "tickets.json", 'utf8', function (err, data) {
         var Tickets = [];

@@ -21,8 +21,7 @@ $(function () {
 
 $('#TBSearchBox').on('keyup', (event) => {
     let SearchIndex = $('input[name="RBSearch"]:checked').val();
-    let SearchBoxID = event.target.id;
-    //console.log(SearchIndex, SearchBoxID ,  event);
+    let SearchBoxID = event.target.id;    
     Search(SearchBoxID, 'tblTickets', SearchIndex);
 });
 
