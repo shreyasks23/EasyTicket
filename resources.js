@@ -21,4 +21,16 @@ router.get('/BootstrapJS', function (req, res) {
     });
 });
 
+router.get('/HelperMethods', function (req, res) {
+    fs.readFile(__dirname + "/JS/" + "helpers.js", 'utf8', function (err, data) {
+        res.end(data);
+    });
+});
+
+router.get('/TicketListJS', function (req, res) {
+    fs.readFile(__dirname + "/JS/" + "ticketlist.js", 'utf8', function (err, data) {
+        res.end(data);
+    });
+});
+
 module.exports = router;

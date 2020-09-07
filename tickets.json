@@ -1,5 +1,16 @@
 [
     {
+        "project": "CLP",
+        "TicketID": "CS-4089",
+        "Summary": "this is to test if the summary search works",
+        "RecievedDate": "06/13/2020 09:44",
+        "ResolvedDate": "06/18/2020 09:55",
+        "Status": "Resolved",
+        "Priority": "P4 - Low",
+        "Severity": "P4 - Low",
+        "ResolutionTime": "120:11:0"
+    },
+    {
         "project": "GMAC",
         "TicketID": "GOS-22393",
         "Summary": "add the values",

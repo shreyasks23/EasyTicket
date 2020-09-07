@@ -83,7 +83,7 @@ app.get('/GetAllTickets', function (req, res) {
 
 
 app.get('/mainJS', function (req, res) {
-    fs.readFile(__dirname + "/JS/" + "common.js", 'utf8', function (err, data) {
+    fs.readFile(__dirname + "/JS/" + "index.js", 'utf8', function (err, data) {
         res.end(data);
     });
 });
