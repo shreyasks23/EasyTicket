@@ -10,13 +10,13 @@ router.get('/Jquery', function (req, res) {
 });
 
 router.get('/BootstrapCSS', function (req, res) {
-    fs.readFile(__dirname + "/bootstrap/css/" + "bootstrap.css", 'utf8', function (err, data) {
+    fs.readFile(__dirname + "/public/bootstrap/css/" + "bootstrap.css", 'utf8', function (err, data) {
         res.end(data);
     });
 });
 
 router.get('/BootstrapJS', function (req, res) {
-    fs.readFile(__dirname + "/bootstrap/js/" + "bootstrap.js", 'utf8', function (err, data) {
+    fs.readFile(__dirname + "/public/bootstrap/js/" + "bootstrap.js", 'utf8', function (err, data) {
         res.end(data);
     });
 });
@@ -35,6 +35,18 @@ router.get('/TicketListJS', function (req, res) {
 
 router.get('/IndexJS', function (req, res) {
     fs.readFile(__dirname + "/JS/" + "index.js", 'utf8', function (err, data) {
+        res.end(data);
+    });
+});
+
+router.get('/DatatableCSS', function (req, res) {
+    fs.readFile(__dirname + "/public/DataTables/" + "datatables.css", 'utf8', function (err, data) {
+        res.end(data);
+    });
+});
+
+router.get('/DatatableJS', function (req, res) {
+    fs.readFile(__dirname + "/public/DataTables/" + "datatables.js", 'utf8', function (err, data) {
         res.end(data);
     });
 });

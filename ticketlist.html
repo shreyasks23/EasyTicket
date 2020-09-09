@@ -2,12 +2,18 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="/resources/bootstrapCSS" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="/resources/bootstrapCSS" >
     <script src="/resources/Jquery"></script>
     <script src="/resources/bootstrapJS"></script>
+    <script src="/resources/DatatableJS"></script>
+    <link rel="stylesheet" type="text/css" href="/resources/DatatableCSS" >
+
+
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket List</title>
+    <title>Easy Ticket - List</title>
 </head>
 
 <body style="align-content: space-around;">
@@ -23,7 +29,7 @@
             <label for="CountHolder">Total Tickets : </label>
             <span id="CountHolder"></span></t>
         </div>
-        <label for="TBSearchBox">Search issues ticket wise : </label><input id="TBSearchBox" type="text"
+        <!-- <label for="TBSearchBox">Search issues ticket wise : </label><input id="TBSearchBox" type="text"
             placeholder="Search here..." class="form-control">
         <div class="col-sm-9">
             <div class="btn-group" data-toggle="buttons">
@@ -37,7 +43,7 @@
                     <input type="radio" id="RBSummary" name="RBSearch" value="2" /> Summary
                 </label>
             </div>
-        </div>
+        </div> -->
         <table id="tblTickets" class="table table-hover table-bordered table-responsive">
         </table>
     </div>

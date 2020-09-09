@@ -14,7 +14,7 @@ var jsonParser = bodyParser.json({
     type: "application/json"
 });
 
-app.use(express.static(__dirname + '/bootstrap'));
+app.use(express.static(__dirname + '/public'));
 
 app.use("/resources", resources);
 
@@ -69,6 +69,12 @@ app.get('/', function (req, res) {
 
 app.get('/Index', function (req, res) {
     fs.readFile(__dirname + "/" + "ticketlist.html", 'utf8', function (err, data) {
+        res.end(data);
+    });
+});
+
+app.get('/Stats', function (req, res) {
+    fs.readFile(__dirname + "/" + "statistics.html", 'utf8', function (err, data) {
         res.end(data);
     });
 });

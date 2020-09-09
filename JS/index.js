@@ -11,7 +11,7 @@ $(function () {
         var ResolutionTime = diff_minutes(ResolvedDate, RecievedDate);
 
         let ticket = {
-            project: project,
+            Project: project,
             TicketID: TicketID,
             Summary: Summary,
             RecievedDate: RecievedDate,
@@ -57,8 +57,9 @@ $(function () {
                 },
                 error: (err) => {
                     console.log(err);
-                },
-                async: false
+                }
+                // ,
+                // async: false
             });
         }
 

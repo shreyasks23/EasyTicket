@@ -1,6 +1,28 @@
 [
     {
-        "project": "CLP",
+        "Project": "IMU",
+        "TicketID": "123450",
+        "Summary": "imu ticket is added",
+        "RecievedDate": "06/13/2020 09:44",
+        "ResolvedDate": "06/13/2020 23:59",
+        "Status": "Resolved",
+        "Priority": "P4 - Low",
+        "Severity": "P4 - Low",
+        "ResolutionTime": "14:15:0"
+    },
+    {
+        "Project": "GMAC",
+        "TicketID": "1368",
+        "Summary": "summary testing 123",
+        "RecievedDate": "06/13/2020 09:44",
+        "ResolvedDate": "06/13/2020 23:44",
+        "Status": "Resolved",
+        "Priority": "P3 - Medium",
+        "Severity": "P3 - Medium",
+        "ResolutionTime": "14:0:0"
+    },
+    {
+        "Project": "CLP",
         "TicketID": "CS-4089",
         "Summary": "this is to test if the summary search works",
         "RecievedDate": "06/13/2020 09:44",
@@ -11,7 +33,7 @@
         "ResolutionTime": "120:11:0"
     },
     {
-        "project": "GMAC",
+        "Project": "GMAC",
         "TicketID": "GOS-22393",
         "Summary": "add the values",
         "RecievedDate": "23-02-1994 23:30",
@@ -22,7 +44,7 @@
         "ResolutionTime": "NaN:NaN:NaN"
     },
     {
-        "project": "GMAC",
+        "Project": "GMAC",
         "TicketID": "GOS-909",
         "Summary": "sdsdsd",
         "RecievedDate": "wewe",
@@ -33,7 +55,7 @@
         "ResolutionTime": "NaN:NaN:NaN"
     },
     {
-        "project": "OUPI",
+        "Project": "OUPI",
         "TicketID": "12435",
         "Summary": "content usage report",
         "RecievedDate": "06/13/2020 09:44",
@@ -44,7 +66,7 @@
         "ResolutionTime": "11:0:0"
     },
     {
-        "project": "GMAC",
+        "Project": "GMAC",
         "TicketID": "456",
         "Summary": "summary",
         "RecievedDate": "05/11/2020 09:44 AM",
@@ -55,7 +77,7 @@
         "ResolutionTime": "25:0:0"
     },
     {
-        "project": "GMAC",
+        "Project": "GMAC",
         "TicketID": "344565677",
         "Summary": "xsdsdsd",
         "RecievedDate": "sdsds",
@@ -66,7 +88,7 @@
         "ResolutionTime": "NaN:NaN:NaN"
     },
     {
-        "project": "GMAC",
+        "Project": "GMAC",
         "TicketID": "GOS-12342",
         "Summary": "summary is added",
         "RecievedDate": "05/10/2020 09:44 PM",
@@ -77,7 +99,7 @@
         "ResolutionTime": "12:58:0"
     },
     {
-        "project": "GMAC",
+        "Project": "GMAC",
         "TicketID": "456789",
         "Summary": "summary added",
         "RecievedDate": "05/10/2020 09:44 PM",
@@ -88,7 +110,7 @@
         "ResolutionTime": "25:0:0"
     },
     {
-        "project": "OUPI",
+        "Project": "OUPI",
         "TicketID": "3456789",
         "Summary": "asasasa",
         "RecievedDate": "05/10/2020 09:44 AM",
