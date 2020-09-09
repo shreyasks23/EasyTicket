@@ -48,4 +48,22 @@ function ExportToExcel(mytblId){
     var htmltable= document.getElementById(mytblId);
     var html = htmltable.outerHTML;    
     window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
- }
+}
+ 
+function diff_minutes(dt2, dt1) {
+
+    let d1 = new Date(dt1);
+    let d2 = new Date(dt2);
+
+
+    var diff = d2.getTime() - d1.getTime();
+
+    var msec = diff;
+    var hh = Math.floor(msec / 1000 / 60 / 60);
+    msec -= hh * 1000 * 60 * 60;
+    var mm = Math.floor(msec / 1000 / 60);
+    msec -= mm * 1000 * 60;
+    var ss = Math.floor(msec / 1000);
+    msec -= ss * 1000;
+    return hh + ":" + mm + ":" + ss;
+}
