@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easy Ticket - Stats</title>
-    <script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
-</head>
-<body>
-    <div id='GraphHolder' style="width:50%; height:300px; margin:0 auto;">
 
-    </div>
-    <div id='GraphHolder2' style="width:50%; height:300px; margin:0 auto;">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Easy Ticket - Stats</title>
+        <script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
+    </head>
 
-    </div>
-</body>
-<script>
-JSC.Chart('GraphHolder', {
-    type: 'horizontal column',
-   series: [
-      {
-         points: [
-            {x: 'SR', y: 50},
-            {x: 'PI', y: 42},
-            {x: 'XX', y: 52},
-            {x: 'XY', y: 82}
-         ]
-      }
-   ]
-});
+    <body>
+        <div id='GraphHolder' style="width:50%; height:300px; margin:0 auto;">
 
-JSC.Chart('GraphHolder2', {
-    type: 'pie',
-   series: [
-      {
-         points: [
-            {x: 'SR', y: 50},
-            {x: 'PI', y: 42},
-            {x: 'XX', y: 52},
-            {x: 'XY', y: 82}
-         ]
-      }
-   ]
-});
-</script>
+        </div>
+        <div id='GraphHolder2' style="width:50%; height:300px; margin:0 auto;">
+
+        </div>
+    </body>
+    <script>
+        const chart1 = JSC.Chart('GraphHolder', {
+            type: 'horizontal column',
+            title: "title text",
+            series: [
+                {
+                    points: [
+                        { x: 'SR', y: 50 },
+                        { x: 'PI', y: 42 },
+                        { x: 'XX', y: 52 },
+                        { x: 'XY', y: 82 }
+                    ]
+                }
+            ]
+        });
+
+        chart1.options({
+            title:
+            {               
+                label_text: "textB"
+            ,
+             legend_visible: false }
+        });
+
+        JSC.Chart('GraphHolder2', {
+            type: 'pie',
+            series: [
+                {
+                    points: [
+                        { x: 'SR', y: 50 },
+                        { x: 'PI', y: 42 },
+                        { x: 'XX', y: 52 },
+                        { x: 'XY', y: 82 }
+                    ]
+                }
+            ]
+        });
+    </script>
+
 </html>
