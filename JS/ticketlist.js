@@ -23,19 +23,20 @@ $(function () {
                     },
                     {
                         title: "Summary",
-                        data: "Summary"
+                        data: "Summary",
+                        sortable : false
                     },
 
                     {
                         title: "RecievedDate",
                         data: "RecievedDate",
-                        'searchable': false,
+                        searchable: false,
                         
                     },
                     {
                         title: "ResolvedDate",
                         data: "ResolvedDate",
-                        'searchable': false,
+                        searchable: false,
                     },
                     {
                         title: "Status",

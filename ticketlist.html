@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+    <head>
+        <script src="/jquery/jquery-3.5.1.js"></script>
+        <script src="/bootstrap/js/bootstrap.js"></script>
+        <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+        <script src="/DataTables/datatables.js"></script>
+        <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Easy Ticket - List</title>
+    </head>
 
-    <link rel="stylesheet" type="text/css" href="/resources/bootstrapCSS" >
-    <script src="/resources/Jquery"></script>
-    <script src="/resources/bootstrapJS"></script>
-    <script src="/resources/DatatableJS"></script>
-    <link rel="stylesheet" type="text/css" href="/resources/DatatableCSS" >
+    <body style="align-content: space-around;">
+        <div class="container p-3 my-3 border">
+            <div class="jumbotron">
+                <h2 class="display-4">Saras Production Incidents</h2>
+                <p class="lead">All ticket details at a glance</p>
+                <a href="/AddTicket" class="btn btn-primary btn-md" style="float: right;">Enter new ticket</a>
+                <a id='BtnExport' class="btn btn-warning btn-md" style="float: left;">Export to excel</a>
 
-
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easy Ticket - List</title>
-</head>
-
-<body style="align-content: space-around;">
-    <div class="container p-3 my-3 border">
-        <div class="jumbotron">
-            <h2 class="display-4">Saras Production Incidents</h2>
-            <p class="lead">All ticket details at a glance</p>
-            <a href="/AddTicket" class="btn btn-primary btn-md" style="float: right;">Enter new ticket</a>
-            <a id='BtnExport' class="btn btn-warning btn-md" style="float: left;">Export to excel</a>
-
-        </div>
-        <div style="float:right">
-            <label for="CountHolder">Total Tickets : </label>
-            <span id="CountHolder"></span></t>
-        </div>
-        <!-- <label for="TBSearchBox">Search issues ticket wise : </label><input id="TBSearchBox" type="text"
+            </div>
+            <div style="float:right">
+                <label for="CountHolder">Total Tickets : </label>
+                <span id="CountHolder"></span></t>
+            </div>
+            <!-- <label for="TBSearchBox">Search issues ticket wise : </label><input id="TBSearchBox" type="text"
             placeholder="Search here..." class="form-control">
         <div class="col-sm-9">
             <div class="btn-group" data-toggle="buttons">
@@ -44,11 +40,11 @@
                 </label>
             </div>
         </div> -->
-        <table id="tblTickets" class="table table-hover table-bordered table-responsive">
-        </table>
-    </div>
-    <script src='/resources/HelperMethods'></script>
-    <script src='/resources/TicketListJS'></script>
-</body>
+            <table id="tblTickets" class="table table-hover table-bordered table-responsive">
+            </table>
+        </div>
+        <script src='/resources/HelperMethods'></script>
+        <script src='/resources/TicketListJS'></script>
+    </body>
 
 </html>

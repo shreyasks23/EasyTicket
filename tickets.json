@@ -1,6 +1,17 @@
 [
     {
         "Project": "IMU",
+        "TicketID": "10987",
+        "Summary": "IMU tickeet summary",
+        "RecievedDate": "06/13/2020 23:59",
+        "ResolvedDate": "06/15/2020 23:44",
+        "Status": "Resolved",
+        "Priority": "P4 - Low",
+        "Severity": "P4 - Low",
+        "ResolutionTime": "47:45:0"
+    },
+    {
+        "Project": "IMU",
         "TicketID": "123450",
         "Summary": "imu ticket is added",
         "RecievedDate": "06/13/2020 09:44",
