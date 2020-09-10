@@ -1,18 +1,20 @@
 $(function () {
     $("#BtnSubmit").on('click', function () {
-        var project = $("#DDLProjectName").val();
+        var Project = $("#DDLProjectName").val();
         var TicketID = $("#TBTicketID").val();
         var Summary = $("#TBSummary").val();
         var RecievedDate = $("#TBReceivedDate").val();
         var ResolvedDate = $("#TBResolvedDate").val();
         var Status = $("#DDLStatus").val();
+        var TicketType = $("#DDLTicketType").val();
         var Priority = $("#DDLPriority").val();
         var Severity = $("#DDLSeverity").val();
         var ResolutionTime = diff_minutes(ResolvedDate, RecievedDate);
 
         let ticket = {
-            Project: project,
+            Project: Project,
             TicketID: TicketID,
+            TicketType : TicketType,
             Summary: Summary,
             RecievedDate: RecievedDate,
             ResolvedDate: ResolvedDate,

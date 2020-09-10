@@ -18,8 +18,12 @@ $(function () {
 
                     },
                     {
-                        title: "TicketID",
+                        title: "Ticket ID",
                         data: "TicketID"
+                    },
+                    {
+                        title: "Ticket Type",
+                        data: "TicketType"
                     },
                     {
                         title: "Summary",
@@ -28,13 +32,13 @@ $(function () {
                     },
 
                     {
-                        title: "RecievedDate",
+                        title: "Recieved Date",
                         data: "RecievedDate",
                         searchable: false,
                         
                     },
                     {
-                        title: "ResolvedDate",
+                        title: "Resolved Date",
                         data: "ResolvedDate",
                         searchable: false,
                     },
@@ -51,12 +55,11 @@ $(function () {
                         data: "Severity"
                     },
                     {
-                        title: "ResolutionTime",
+                        title: "Resolution Time",
                         data: "ResolutionTime"
                     }
                 ]
-            });
-            //constructTable(Tickets, "#tblTickets");
+            });           
         },
         error: (err) => {
             console.log(err);
@@ -65,14 +68,5 @@ $(function () {
     $('#BtnExport').on('click', (event) => {
         ExportToExcel("tblTickets");
     });
-
-
-
-});
-
-$('#TBSearchBox').on('keyup', (event) => {
-    let SearchIndex = $('input[name="RBSearch"]:checked').val();
-    let SearchBoxID = event.target.id;
-    Search(SearchBoxID, 'tblTickets', SearchIndex);
 });
 

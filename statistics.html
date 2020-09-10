@@ -5,56 +5,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Easy Ticket - Stats</title>
-        <script src="/jscharting/jscharting.js"></script>
+        <script src="/ChartJS/Chart.js"></script>
         <script src="/jquery/jquery-3.5.1.js"></script>
 
     </head>
 
     <body>
-        <div id='GraphHolder' style="width:50%; height:300px; margin:0 auto;">
+        <label for="DDLProjectName">Select project</label>
+        <select id="DDLProjectName">
+            <option>All</option>
+            <option>GMAC</option>
+            <option>OUPI</option>
+            <option>IMU</option>
+            <option>CLP</option>
+        </select>  
+        <div style="width: 600px;height: 500px;" >  
+        <canvas id="myChart"></canvas>
+    </div>  
+    </body>  
 
-        </div>
-        <div id='GraphHolder2' style="width:50%; height:300px; margin:0 auto;">
-
-        </div>
-    </body>
-    <script>
-        const chart1 = JSC.Chart('GraphHolder', {
-            type: 'horizontal column',
-            title: "title text",
-            series: [
-                {
-                    points: [
-                        { x: 'SR', y: 50 },
-                        { x: 'PI', y: 42 },
-                        { x: 'XX', y: 52 },
-                        { x: 'XY', y: 82 }
-                    ]
-                }
-            ]
-        });
-
-        chart1.options({
-            title:
-            {               
-                label_text: "textB"
-            ,
-             legend_visible: false }
-        });
-
-        JSC.Chart('GraphHolder2', {
-            type: 'pie',
-            series: [
-                {
-                    points: [
-                        { x: 'SR', y: 50 },
-                        { x: 'PI', y: 42 },
-                        { x: 'XX', y: 52 },
-                        { x: 'XY', y: 82 }
-                    ]
-                }
-            ]
-        });
-    </script>
+    <script src="/resources/StatsJS"></script>
 
 </html>

@@ -22,4 +22,10 @@ router.get('/IndexJS', function (req, res) {
     });
 });
 
+router.get('/StatsJS', function (req, res) {
+    fs.readFile(__dirname + "/JS/" + "statistics.js", 'utf8', function (err, data) {
+        res.end(data);
+    });
+});
+
 module.exports = router;
