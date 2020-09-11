@@ -122,7 +122,7 @@ function CreateChart(ChartData)
             legend: {
                 display: true,
                 labels: {
-                    fontColor: 'rgb(255, 99, 132)'
+                    fontColor: 'green'
                 }
             },
             scales: {
@@ -140,7 +140,7 @@ function CreateChart(ChartData)
                         callback: (v,i,arr) => {
                             return Number(v);
                         },
-                        precision:0
+                        stepSize:1
                     }
                 }]
             }
