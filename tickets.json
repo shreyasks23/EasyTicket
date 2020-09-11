@@ -1,5 +1,18 @@
 [
     {
+        "Project": "CLP",
+        "TicketID": "CS-4023",
+        "TicketType": "Change Request",
+        "Summary": "need to change connect data",
+        "RecievedDate": "05/10/2020 09:44 AM",
+        "ResolvedDate": "05/12/2020 08:44 AM",
+        "Status": "Resolved",
+        "Priority": "P3 - Medium",
+        "Severity": "P3 - Medium",
+        "HandledBy":"Shreyas",
+        "ResolutionTime": "47:0:0"
+    },
+    {
         "Project": "OUPI",
         "TicketID": "CS-99878",
         "TicketType": "Incident",
@@ -9,7 +22,8 @@
         "Status": "Resolved",
         "Priority": "P4 - Low",
         "Severity": "P4 - Low",
-        "ResolutionTime": "24:0:0"
+        "ResolutionTime": "24:0:0",
+        "HandledBy": "Shreyas"
     },
     {
         "Project": "GMAC",
@@ -21,7 +35,8 @@
         "Status": "Resolved",
         "Priority": "P3 - Medium",
         "Severity": "P3 - Medium",
-        "ResolutionTime": "96:0:0"
+        "ResolutionTime": "96:0:0",
+        "HandledBy": "Samatha"
     },
     {
         "Project": "IMU",
@@ -33,7 +48,8 @@
         "Status": "Resolved",
         "Priority": "P4 - Low",
         "Severity": "P4 - Low",
-        "ResolutionTime": "47:45:0"
+        "ResolutionTime": "47:45:0",
+        "HandledBy": "Shreyas"
     },
     {
         "Project": "IMU",
@@ -45,7 +61,8 @@
         "Status": "Resolved",
         "Priority": "P4 - Low",
         "Severity": "P4 - Low",
-        "ResolutionTime": "14:15:0"
+        "ResolutionTime": "14:15:0",
+        "HandledBy": "Shreyas"
     },
     {
         "Project": "GMAC",
@@ -57,7 +74,8 @@
         "Status": "Resolved",
         "Priority": "P3 - Medium",
         "Severity": "P3 - Medium",
-        "ResolutionTime": "14:0:0"
+        "ResolutionTime": "14:0:0",
+        "HandledBy": "Sheethal"
     },
     {
         "Project": "CLP",
@@ -69,7 +87,8 @@
         "Status": "Resolved",
         "Priority": "P4 - Low",
         "Severity": "P4 - Low",
-        "ResolutionTime": "120:11:0"
+        "ResolutionTime": "120:11:0",
+        "HandledBy": "Samatha"
     },
     {
         "Project": "GMAC",
@@ -81,7 +100,8 @@
         "Status": "Closed",
         "Priority": "P1 - Critical",
         "Severity": "P1 - Critical",
-        "ResolutionTime": "NaN:NaN:NaN"
+        "ResolutionTime": "25:0:0",
+        "HandledBy": "Antony"
     },
     {
         "Project": "GMAC",
@@ -93,7 +113,8 @@
         "Status": "New",
         "Priority": "P1 - Critical",
         "Severity": "P1 - Critical",
-        "ResolutionTime": "NaN:NaN:NaN"
+        "ResolutionTime": "25:0:0",
+        "HandledBy": "Rony"
     },
     {
         "Project": "OUPI",
@@ -105,7 +126,8 @@
         "Status": "In Progress",
         "Priority": "P2 - High",
         "Severity": "P2 - High",
-        "ResolutionTime": "11:0:0"
+        "ResolutionTime": "11:0:0",
+        "HandledBy": "Antony"
     },
     {
         "Project": "GMAC",
@@ -117,7 +139,8 @@
         "Status": "New",
         "Priority": "P1 - Critical",
         "Severity": "P1 - Critical",
-        "ResolutionTime": "25:0:0"
+        "ResolutionTime": "25:0:0",
+        "HandledBy": "Sheethal"
     },
     {
         "Project": "GMAC",
@@ -129,7 +152,8 @@
         "Status": "New",
         "Priority": "P1 - Critical",
         "Severity": "P1 - Critical",
-        "ResolutionTime": "NaN:NaN:NaN"
+        "ResolutionTime": "25:0:0",
+        "HandledBy": "Rony"
     },
     {
         "Project": "GMAC",
@@ -141,7 +165,8 @@
         "Status": "Resolved",
         "Priority": "P4 - Low",
         "Severity": "P4 - Low",
-        "ResolutionTime": "12:58:0"
+        "ResolutionTime": "12:58:0",
+        "HandledBy": "Dhanush"
     },
     {
         "Project": "GMAC",
@@ -153,7 +178,8 @@
         "Status": "New",
         "Priority": "P1 - Critical",
         "Severity": "P1 - Critical",
-        "ResolutionTime": "25:0:0"
+        "ResolutionTime": "25:0:0",
+        "HandledBy": "Ajay"
     },
     {
         "Project": "OUPI",
@@ -165,6 +191,7 @@
         "Status": "New",
         "Priority": "P1 - Critical",
         "Severity": "P1 - Critical",
-        "ResolutionTime": "744:0:0"
+        "ResolutionTime": "744:0:0",
+        "HandledBy": "Ajay"
     }
 ]

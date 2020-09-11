@@ -5,25 +5,38 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Easy Ticket - Stats</title>
-        <script src="/ChartJS/Chart.js"></script>
-        <script src="/jquery/jquery-3.5.1.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
     </head>
 
     <body>
-        <label for="DDLProjectName">Select project</label>
-        <select id="DDLProjectName">
-            <option>All</option>
-            <option>GMAC</option>
-            <option>OUPI</option>
-            <option>IMU</option>
-            <option>CLP</option>
-        </select>  
-        <div style="width: 600px;height: 500px;" >  
-        <canvas id="myChart"></canvas>
-    </div>  
-    </body>  
-
+        <div class='container p-4 my-4 border'>
+            <div class="jumbotron">
+                <h2 class="display-4">Saras Support - Ticket Management</h2>
+                <p class="lead">
+                    Visualize ticket details Project wise , Ticket wise ,
+                     Priority wise or Executive wise
+                </p>
+            </div>
+            <div class='container'>
+            <div class='form-group'>
+                <label for="DDLProjectName">Select project to view : </label>
+                <select class='form-control col-3' id="DDLProjectName">
+                    <option>All</option>
+                    <option>GMAC</option>
+                    <option>OUPI</option>
+                    <option>IMU</option>
+                    <option>CLP</option>
+                </select>
+            </div>
+            <div class='container p-3 my-3 border' style="width: inherit;height: inherit;">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        </div>
+    </body>
+    <script src="/jquery/jquery-3.5.1.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script src="/ChartJS/Chart.js"></script>    
     <script src="/resources/StatsJS"></script>
 
 </html>

@@ -56,7 +56,12 @@ $(function () {
                     },
                     {
                         title: "Resolution Time",
-                        data: "ResolutionTime"
+                        data: "ResolutionTime",
+                        searchable: false,
+                    },
+                    {
+                        title: "Handled By",
+                        data: "HandledBy"
                     }
                 ]
             });           

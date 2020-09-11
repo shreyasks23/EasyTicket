@@ -9,6 +9,7 @@ $(function () {
         var TicketType = $("#DDLTicketType").val();
         var Priority = $("#DDLPriority").val();
         var Severity = $("#DDLSeverity").val();
+        var HandledBy = $("#DDLHandledBy").val();
         var ResolutionTime = diff_minutes(ResolvedDate, RecievedDate);
 
         let ticket = {
@@ -21,6 +22,7 @@ $(function () {
             Status: Status,
             Priority: Priority,
             Severity: Severity,
+            HandledBy : HandledBy,
             ResolutionTime: ResolutionTime
         };
 

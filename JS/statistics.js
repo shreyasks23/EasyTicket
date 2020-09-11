@@ -85,11 +85,12 @@ function GetTicketCount(ticketList) {
 
 function CreateChart(ChartData)
 {
-    var ctx = $('#myChart');
-    var myChart = new Chart(ctx, {
+    let labels = ['Service Request', 'Question/Query', 'Bug', 'Incident', 'Story', 'Improvement', 'Change Request']
+    let ctx = $('#myChart');
+    let myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Service Request', 'Question/Query', 'Bug', 'Incident', 'Story', 'Improvement', 'Change Request'],
+            labels: labels,
             datasets: [{
                 label: 'no. of tickets',
                 data: ChartData,
@@ -127,7 +128,7 @@ function CreateChart(ChartData)
             scales: {
                 xAxes: [{
                     gridLines: {
-                        display: false
+                        display: true
                     }
                 }],
                 yAxes: [{
@@ -135,7 +136,11 @@ function CreateChart(ChartData)
                         display: false
                     },
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        callback: (v,i,arr) => {
+                            return Number(v);
+                        },
+                        precision:0
                     }
                 }]
             }
