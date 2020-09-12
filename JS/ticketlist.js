@@ -8,10 +8,11 @@ $(function () {
             let Count = data.Count;
             console.log(Tickets);
             $("#CountHolder").text(Count);
-            $('#tblTickets').DataTable({
+            $('#tblTickets').DataTable({                                
                 data: Tickets,
-
+                
                 columns: [
+                   
                     {
                         title: "Project",
                         data: "Project",
@@ -26,8 +27,8 @@ $(function () {
                         data: "TicketType"
                     },
                     {
-                        title: "Summary",
-                        data: "Summary",
+                        title: "Subject",
+                        data: "Subject",                        
                         sortable : false
                     },
 
@@ -69,7 +70,9 @@ $(function () {
         error: (err) => {
             console.log(err);
         }
-    });
+    }); 
+    
+
     $('#BtnExport').on('click', (event) => {
         ExportToExcel("tblTickets");
     });

@@ -17,7 +17,7 @@ router.get('/TicketListJS', function (req, res) {
 });
 
 router.get('/IndexJS', function (req, res) {
-    fs.readFile(__dirname + "/JS/" + "index.js", 'utf8', function (err, data) {
+    fs.readFile(__dirname + "/JS/" + "addticket.js", 'utf8', function (err, data) {
         res.end(data);
     });
 });

@@ -2,7 +2,7 @@ $(function () {
     $("#BtnSubmit").on('click', function () {
         var Project = $("#DDLProjectName").val();
         var TicketID = $("#TBTicketID").val();
-        var Summary = $("#TBSummary").val();
+        var Subject = $("#TBSubject").val();
         var RecievedDate = $("#TBReceivedDate").val();
         var ResolvedDate = $("#TBResolvedDate").val();
         var Status = $("#DDLStatus").val();
@@ -16,7 +16,7 @@ $(function () {
             Project: Project,
             TicketID: TicketID,
             TicketType : TicketType,
-            Summary: Summary,
+            Subject: Subject,
             RecievedDate: RecievedDate,
             ResolvedDate: ResolvedDate,
             Status: Status,
