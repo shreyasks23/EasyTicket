@@ -14,7 +14,7 @@ var jsonParser = bodyParser.json({
     type: "application/json"
 });
 
-app.use(express.static(__dirname + '/bootstrap'));
+app.use(express.static(__dirname + '/public'));
 
 app.use("/resources", resources);
 
@@ -62,19 +62,25 @@ app.post('/AddTicket', jsonParser, (req, res) => {
 });
 
 app.get('/', function (req, res) {
-    fs.readFile(__dirname + "/" + "ticketlist.html", 'utf8', function (err, data) {
+    fs.readFile(__dirname + "/views" + "/statistics.html", 'utf8', function (err, data) {
+        res.end(data);
+    });
+});
+
+app.get('/TicketList', function (req, res) {
+    fs.readFile(__dirname + "/views" + "/ticketlist.html", 'utf8', function (err, data) {
         res.end(data);
     });
 });
 
 app.get('/Index', function (req, res) {
-    fs.readFile(__dirname + "/" + "ticketlist.html", 'utf8', function (err, data) {
+    fs.readFile(__dirname + "/views" + "/statistics.html", 'utf8', function (err, data) {
         res.end(data);
     });
 });
 
 app.get('/AddTicket', function (req, res) {
-    fs.readFile(__dirname + "/" + "index.html", 'utf8', function (err, data) {
+    fs.readFile(__dirname + "/views" + "/addticket.html", 'utf8', function (err, data) {
         res.end(data);
     });
 });
