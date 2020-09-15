@@ -1,5 +1,18 @@
 [
     {
+        "Project": "IMU",
+        "TicketID": "89450",
+        "TicketType": "Change Request",
+        "Subject": "Imu ticket testing in tables",
+        "RecievedDate": "06/13/2020 23:59",
+        "ResolvedDate": "06/14/2020 23:59",
+        "Status": "Resolved",
+        "Priority": "P4 - Low",
+        "Severity": "P4 - Low",
+        "HandledBy": "Shreyas",
+        "ResolutionTime": "24:0:0"
+    },
+    {
         "Project": "GMAC",
         "TicketID": "GOS-11808",
         "TicketType": "Change Request",
@@ -121,8 +134,8 @@
         "TicketID": "GOS-909",
         "TicketType": "Story",
         "Subject": "sdsdsd",
-        "RecievedDate": "wewe",
-        "ResolvedDate": "ewew",
+        "RecievedDate": "05/10/2020 09:44 AM",
+        "ResolvedDate": "05/21/2020 09:44 AM",
         "Status": "New",
         "Priority": "P1 - Critical",
         "Severity": "P1 - Critical",

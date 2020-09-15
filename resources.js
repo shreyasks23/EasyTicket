@@ -28,4 +28,10 @@ router.get('/StatsJS', function (req, res) {
     });
 });
 
+router.get('/TabulatorJSHelpers', function (req, res) {
+    fs.readFile(__dirname + "/JS/" + "tabulatorhelpers.js", 'utf8', function (err, data) {
+        res.end(data);
+    });
+});
+
 module.exports = router;
