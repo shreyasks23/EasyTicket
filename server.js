@@ -54,38 +54,39 @@ app.post('/AddTicket', jsonParser, (req, res) => {
         fs.writeFile(__dirname + "/" + "tickets.json", jsonString, function (err) {
             if (err) throw err;
             console.log('created!');            
-            res.status('200').send(count.toString());         
+            res.status('200').send(count.toString());     
+            
         });
 
     });
     
 });
 
-app.get('/', function (req, res) {
+app.get('/',  (req, res) => {
     fs.readFile(__dirname + "/views" + "/statistics.html", 'utf8', function (err, data) {
         res.end(data);
     });
 });
 
-app.get('/TicketList', function (req, res) {
+app.get('/TicketList',  (req, res) =>{
     fs.readFile(__dirname + "/views" + "/ticketlist.html", 'utf8', function (err, data) {
         res.end(data);
     });
 });
 
-app.get('/Index', function (req, res) {
+app.get('/Index',  (req, res) => {
     fs.readFile(__dirname + "/views" + "/statistics.html", 'utf8', function (err, data) {
         res.end(data);
     });
 });
 
-app.get('/AddTicket', function (req, res) {
+app.get('/AddTicket',  (req, res) =>{
     fs.readFile(__dirname + "/views" + "/addticket.html", 'utf8', function (err, data) {
         res.end(data);
     });
 });
 
-app.get('/AllTickets', function (req, res) {
+app.get('/AllTickets',  (req, res) => {
     fs.readFile(__dirname + "/" + "tickets.json", 'utf8', function (err, data) {
         var Tickets = [];
         Tickets = JSON.parse(data);
@@ -97,6 +98,27 @@ app.get('/AllTickets', function (req, res) {
         res.send(resObj);
     });
 });
+
+app.post('/UpdateTicket', jsonParser, (req, res) => {
+    let UpdatedTicket = req.body;
+    fs.readFile(__dirname + "/" + "tickets.json", 'utf8', function (err, data) {
+        let Tickets = [];
+        Tickets = JSON.parse(data);
+        let index = Tickets.findIndex((v) => { return v.TicketID == UpdatedTicket.TicketID })
+        console.log(Tickets[index]);
+        Tickets[index] = UpdatedTicket;
+        
+        var jsonString = JSON.stringify(Tickets);
+        fs.writeFile(__dirname + "/" + "tickets.json", jsonString, function (err) {
+            if (err) throw err;
+            console.log('Updated!');            
+            res.status('201').send("Ticket updated");     
+            
+        });
+
+    });
+    
+})
 
 //#endregion
 

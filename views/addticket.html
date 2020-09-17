@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Easy Ticket - Enter details</title>        
+        <title>Easy Ticket - Enter details</title>
         <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="/css/styles.css">
     </head>
@@ -15,129 +15,136 @@
                 <a class="navbar-brand" href="#">
                     <img src="/img/eslogo.png" width="170" height="35" class="d-inline-block align-top" alt="">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                    <li class="nav-item">
-                      <a class="nav-link" href="/index">Home</span></a>
-                    </li>                    
-                    <li class="nav-item active">
-                      <a class="nav-link" href="/AddTicket">Add Ticket</a>
-                    </li>  
-                    <li class="nav-item">
-                        <a class="nav-link" href="/TicketList">View Tickets</a>
-                      </li>                  
-                  </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index">Home</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/AddTicket">Add Ticket</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/TicketList">View Tickets</a>
+                        </li>
+                    </ul>
                 </div>
-              </nav>
+            </nav>
             <div class="jumbotron  bg-light">
                 <h2 class="display-4">Saras Support - Ticket Management</h2>
                 <p class="lead">
                     This will enable support executives to easily enter ticket details and manage them in single place
                 </p>
             </div>
-            <div class="row">
-                <div class="form-group col-4">
-                    <label class="form-label" for="DDLProjectName">Project : </label>
-                    <select class="form-control" id="DDLProjectName">
-                        <option value="" disabled selected>Select Project</option>
-                        <option>GMAC</option>
-                        <option>OUPI</option>
-                        <option>IMU</option>
-                        <option>CLP</option>
-                    </select>
-                </div>
-                <div class="form-group col-3">
-                    <label class="form-label" for="DDLTicketType">Type : </label>
-                    <select class="form-control" id="DDLTicketType" placeholder="Select Type">
-                        <option>Service Request</option>
-                        <option>Incident</option>
-                        <option>Bug</option>
-                        <option>Question/Query</option>
-                        <option>Improvement</option>
-                        <option>Change Request</option>
-                        <option>Story</option>
-                    </select>
-                </div>
+            <form id="SubmitForm">
+                <div class="row">
+                    <div class="form-group col-4">
+                        <label class="form-label" for="DDLProjectName">Project : </label>
+                        <select class="form-control" id="DDLProjectName" required="required">
+                            <option value="" disabled selected>Select Project</option>
+                            <option>GMAC</option>
+                            <option>OUPI</option>
+                            <option>IMU</option>
+                            <option>CLP</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-3">
+                        <label class="form-label" for="DDLTicketType">Type : </label>
+                        <select class="form-control" id="DDLTicketType" placeholder="Select Type">
+                            <option>Service Request</option>
+                            <option>Incident</option>
+                            <option>Bug</option>
+                            <option>Question/Query</option>
+                            <option>Improvement</option>
+                            <option>Change Request</option>
+                            <option>Story</option>
+                        </select>
+                    </div>
 
-                <div class="form-group col-3">
-                    <label for="TBTicketID">Ticket ID : </label> <input id="TBTicketID" type="text"
-                        placeholder="Enter Ticket ID" class="form-control">
+                    <div class="form-group col-3">
+                        <label for="TBTicketID">Ticket ID : </label> <input id="TBTicketID" type="text"
+                            placeholder="Enter Ticket ID" class="form-control" required="required">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="TBSubject">Subject : </label> <input id="TBSubject" type="text"
-                    placeholder="Enter ticket Title" class="form-control">
-            </div>
-            <div class="row">
-            <div class="form-group col-6">
-                <label for="TBReceivedDate">Received ON :</label><input id="TBReceivedDate" type="datetime"
-                    placeholder="Enter Received time" class="form-control">
-            </div>
-            <div class="form-group col-6">
-                <label for="TBResolvedDate">Resolved ON : </label><input id="TBResolvedDate" type="datetime"
-                    placeholder="Enter Resolved time" class="form-control">
-            </div>
-        </div>
-            <div class="row">
-                <div class="form-group col-3">
-                    <label for="DDLStatus">Status : </label>
-                    <select class="form-control" id="DDLStatus">
-                        <option>New</option>
-                        <option>In Progress</option>
-                        <option>Resolved</option>
-                        <option>Closed</option>
-                    </select>
+                <div class="form-group">
+                    <label for="TBSubject">Subject : </label> <input id="TBSubject" type="text"
+                        placeholder="Enter ticket Title" class="form-control" required="required" />
                 </div>
-                <div class="form-group col-4">
-                    <label for="DDLPriority">Priority : </label>
-                    <select class="form-control" id="DDLPriority">
-                        <option>P1 - Critical</option>
-                        <option>P2 - High</option>
-                        <option>P3 - Medium</option>
-                        <option>P4 - Low</option>
-                    </select>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="TBReceivedDate">Received ON :</label><input id="TBReceivedDate" type="datetime"
+                            placeholder="Enter Received time" class="form-control" required="required">
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="TBResolvedDate">Resolved ON : </label><input id="TBResolvedDate" type="datetime"
+                            placeholder="Enter Resolved time" class="form-control">
+                    </div>
                 </div>
-                <div class="form-group col-4">
-                    <label for="DDLSeverity">Severity : </label>
-                    <select class="form-control" id="DDLSeverity">
-                        <option>P1 - Critical</option>
-                        <option>P2 - High</option>
-                        <option>P3 - Medium</option>
-                        <option>P4 - Low</option>
-                    </select>
+                <div class="row">
+                    <div class="form-group col-3">
+                        <label for="DDLStatus">Status : </label>
+                        <select class="form-control" id="DDLStatus">
+                            <option>New</option>
+                            <option>In Progress</option>
+                            <option>Resolved</option>
+                            <option>Closed</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="DDLPriority">Priority : </label>
+                        <select class="form-control" id="DDLPriority">
+                            <option>P1 - Critical</option>
+                            <option>P2 - High</option>
+                            <option>P3 - Medium</option>
+                            <option>P4 - Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="DDLSeverity">Severity : </label>
+                        <select class="form-control" id="DDLSeverity">
+                            <option>P1 - Critical</option>
+                            <option>P2 - High</option>
+                            <option>P3 - Medium</option>
+                            <option>P4 - Low</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="row" >
-            <div class="form-group col-4">
-                <label for="DDLHandledBy">Handled By : </label>
-                <select class="form-control" id="DDLHandledBy">
-                    <option>Antony</option>
-                    <option>Sheethal</option>
-                    <option>Samatha</option>
-                    <option>Shreyas</option>
-                    <option>Rony</option>
-                    <option>Dhanush</option>
-                    <option>Ajay</option>
-                </select>
-            </div>
-            <div class="form-group col-6">
-                <label for="TASummary">Summary : </label>
-               <textarea id="TASummary" class="form-control" placeholder="Enter more details"></textarea>
-            </div>
-        </div>
-            <div class="d-flex justify-content-around border-top p-2">
-                <a id="BtnSubmit" class="btn btn-outline-success btn-lg" role="button">Submit</a>
-                <a id="BtnClear" class="btn btn-outline-danger btn-lg" role="button" style="float: right;">Clear</a>
-            </div>
+                <div class="row">
+                    <div class="form-group col-4">
+                        <label for="DDLHandledBy">Handled By : </label>
+                        <select class="form-control" id="DDLHandledBy">
+                            <option>Antony</option>
+                            <option>Sheethal</option>
+                            <option>Samatha</option>
+                            <option>Shreyas</option>
+                            <option>Rony</option>
+                            <option>Dhanush</option>
+                            <option>Ajay</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="TASummary">Summary : </label>
+                        <textarea id="TASummary" class="form-control" placeholder="Enter more details"></textarea>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-around border-top p-2">
+                    <button id="BtnSubmit" type="submit" class="btn btn-outline-success btn-lg"
+                        role="button">Submit</button>
+                    <button id="BtnClear" class="btn btn-outline-danger btn-lg" role="button"
+                        style="float: right;">Clear</button>
+                </div>
+            </form>
         </div>
 
     </body>
     <script src="/jquery/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script src="/bootstrap/js/bootstrap.js"></script>
-    <script src="/resources/IndexJS"></script>
+    <script src="/resources/AddTicketJS"></script>
     <script src='/resources/HelperMethods'></script>
 
 </html>

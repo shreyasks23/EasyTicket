@@ -11,13 +11,31 @@ $(function () {
             $("#CountHolder").text(Count);
 
             table = new Tabulator("#tblTickets", {
-                tooltipsHeader: true,                
-                //selectable:true,
+                tooltipsHeader: true,           
+                
                 tooltips:true,                                
-                layout: "fitColumns",
-                cellEdited:function(cell){
-                    //cell - cell component
-                    console.log(cell.getRow().getData());
+                layout: "fitDataFill",
+                cellEdited: function (cell) {
+                    let data = {};
+                       data = cell.getRow().getData();
+                    $.ajax({
+                        url: '/UpdateTicket',
+                        type: 'POST',
+                        contentType : 'application/json',
+                        data: JSON.stringify(data),
+                        success: (data , status) => {
+                            if (status == 'success') {
+                                alert(data);
+                            }
+                            else {
+                                alert(data);
+                            }
+                        },
+                        error: (err) => {
+                            console.log(err);
+                        }
+                   })
+                    //console.log(cell.getRow().getData());
                     },
                     
                 rowContextMenu:rowMenu ,
