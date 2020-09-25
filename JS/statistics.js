@@ -4,10 +4,11 @@ $(function () {
 
     $.ajax({
         type: 'GET',
-        url: '/AllTickets',
+        url: '/apis/AllTickets',
         success: (res) => {
-            Tickets = res.Tickets;
-            Count = res.Count;
+            console.log(res);
+            Tickets = res;
+            //Count = res.Count;
         },
         async: false
     });

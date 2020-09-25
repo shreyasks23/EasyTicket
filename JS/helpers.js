@@ -1,4 +1,45 @@
-function constructTable(list, selector) {
+
+ 
+function diff_minutes(dt2, dt1) {
+
+    let d1 = new Date(dt1);
+    let d2 = new Date(dt2);
+
+
+    var diff = d2.getTime() - d1.getTime();
+
+    var msec = diff;
+    var hh = Math.floor(msec / 1000 / 60 / 60);
+    msec -= hh * 1000 * 60 * 60;
+    var mm = Math.floor(msec / 1000 / 60);
+    msec -= mm * 1000 * 60;
+    var ss = Math.floor(msec / 1000);
+    msec -= ss * 1000;
+    return hh + ":" + mm + ":" + ss;
+}
+
+//#region depricated methods
+
+function Search(inputElement , tableName , SelectedIndex) {
+    let input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById(inputElement);
+    filter = input.value.toUpperCase();
+    table = document.getElementById(tableName);
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[SelectedIndex];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+  }
+
+  function constructTable(list, selector) {
 
     // Getting the all column names 
     $(selector).empty();
@@ -49,42 +90,4 @@ function ExportToExcel(mytblId){
     var html = htmltable.outerHTML;    
     window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
 }
- 
-function diff_minutes(dt2, dt1) {
-
-    let d1 = new Date(dt1);
-    let d2 = new Date(dt2);
-
-
-    var diff = d2.getTime() - d1.getTime();
-
-    var msec = diff;
-    var hh = Math.floor(msec / 1000 / 60 / 60);
-    msec -= hh * 1000 * 60 * 60;
-    var mm = Math.floor(msec / 1000 / 60);
-    msec -= mm * 1000 * 60;
-    var ss = Math.floor(msec / 1000);
-    msec -= ss * 1000;
-    return hh + ":" + mm + ":" + ss;
-}
-
-function Search(inputElement , tableName , SelectedIndex) {
-    let input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById(inputElement);
-    filter = input.value.toUpperCase();
-    table = document.getElementById(tableName);
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[SelectedIndex];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }       
-    }
-  }
-
-  
+//#endregion

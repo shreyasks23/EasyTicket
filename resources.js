@@ -1,37 +1,31 @@
 const express = require('express');
 const fs = require("fs");
 
-var router = express.Router();
+const router = express.Router();
 
 
 router.get('/HelperMethods', function (req, res) {
-    fs.readFile(__dirname + "/JS/" + "helpers.js", 'utf8', function (err, data) {
-        res.end(data);
-    });
+    res.sendFile(__dirname + "/JS/" + "helpers.js");
+    
 });
 
 router.get('/TicketListJS', function (req, res) {
-    fs.readFile(__dirname + "/JS/" + "ticketlist.js", 'utf8', function (err, data) {
-        res.end(data);
-    });
+    res.sendFile(__dirname + "/JS/" + "ticketlist.js");
+    
 });
 
 router.get('/AddTicketJS', function (req, res) {
-    fs.readFile(__dirname + "/JS/" + "addticket.js", 'utf8', function (err, data) {
-        res.end(data);
-    });
+    res.sendFile(__dirname + "/JS/" + "addticket.js");
+    
 });
 
 router.get('/StatsJS', function (req, res) {
-    fs.readFile(__dirname + "/JS/" + "statistics.js", 'utf8', function (err, data) {
-        res.end(data);
-    });
+    res.sendFile(__dirname + "/JS/" + "statistics.js");
+    
 });
 
 router.get('/TabulatorJSHelpers', function (req, res) {
-    fs.readFile(__dirname + "/JS/" + "tabulatorhelpers.js", 'utf8', function (err, data) {
-        res.end(data);
-    });
+    res.sendFile(__dirname + "/JS/" + "tabulatorhelpers.js");    
 });
 
 module.exports = router;

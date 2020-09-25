@@ -2,11 +2,11 @@ $(function () {
     let table;
     $.ajax({
         type: 'GET',
-        url: '/AllTickets',
+        url: '/apis/AllTickets',
         success: (data) => {
             //console.log(data);
-            let Tickets = data.Tickets;
-            let Count = data.Count;
+            let Tickets = data;
+            let Count = data.length;
             //console.log(Tickets);
             $("#CountHolder").text(Count);
 
@@ -19,7 +19,7 @@ $(function () {
                     let data = {};
                        data = cell.getRow().getData();
                     $.ajax({
-                        url: '/UpdateTicket',
+                        url: '/apis/UpdateTicket',
                         type: 'POST',
                         contentType : 'application/json',
                         data: JSON.stringify(data),
