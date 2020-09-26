@@ -11,7 +11,7 @@ $(function () {
         var Priority = $("#DDLPriority").val();
         var Severity = $("#DDLSeverity").val();
         var HandledBy = $("#DDLHandledBy").val();
-        var ResolutionTime = diff_minutes(ResolvedDate, RecievedDate);
+        var ResolutionTime = "00:00:00";
 
         let ticket = {
             Project: Project,
