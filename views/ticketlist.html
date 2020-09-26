@@ -1,75 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>        
-        <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="/css/styles.css">        
-        <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">  
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Easy Ticket - List</title>
-    </head>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 
-    <body>
-        <div class="container p-3 my-4 border">
-            <nav class="navbar navbar-expand-lg navbar-light bg-info my-3">
-                <a class="navbar-brand" href="#">
-                    <img src="/img/eslogo.png" width="170" height="35" class="d-inline-block align-top" alt="">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                    <li class="nav-item ">
-                      <a class="nav-link" href="/index">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/AddTicket">Add Ticket</a>
-                    </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">View Tickets</a>
-                    </li>                    
-                  </ul>
-                </div>
-              </nav>
-            <div class="jumbotron  bg-light">
-                <h2 class="display-4">Saras Support - Ticket Management</h2>
-                <p class="lead">All ticket details at a glance</p>                
-                <a id='BtnExport' class="btn btn-warning btn-md" style="float: left;">Export to excel</a>
+    <link href="/tabulator/dist/css/bootstrap/tabulator_bootstrap4.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
-            </div>
-            <div style="float:right">
-                <label for="CountHolder">Total Tickets : </label>
-                <span id="CountHolder"></span></t>
-            </div>                        
-            <table id="tblTickets" class="compact table-hover table-bordered table-responsive">
-              <thead>
-                <tr>
-                  <th>Project</th>
-                  <th>Ticket ID</th>
-                  <th>Ticket Type</th>
-                  <th>Subject</th>
-                  <th>Recieved Date</th>
-                  <th>Resolved Date</th>
-                  <th>Status</th>
-                  <th>Priority</th>
-                  <th>Severity</th>
-                  <th>Resolution Time</th>
-                  <th>Handled By</th>  
-                  <th>Action</th> 
-                </tr>                
-              </thead>
-              <tbody>                
-              </tbody>
-            </table>
-        
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Ticket - List</title>
+  </head>
+
+  <body>
+    <div class="container p-3 my-4 border">
+      <nav class="navbar navbar-expand-lg navbar-light bg-info my-3">
+        <a class="navbar-brand" href="#">
+          <img src="/img/eslogo.png" width="170" height="35" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item ">
+              <a class="nav-link" href="/index">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/AddTicket">Add Ticket</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">View Tickets</a>
+            </li>
+          </ul>
         </div>
-        <script src="/jquery/jquery-3.5.1.js"></script>
-        <script src="/bootstrap/js/bootstrap.js"></script>
-        <script src="/DataTables/datatables.js"></script>
-        <script src='/resources/HelperMethods'></script>
-        <script src='/resources/TicketListJS'></script>
-    </body>
+      </nav>
+      <div class="jumbotron  bg-light">
+        <h2 class="display-4">Saras Support - Ticket Management</h2>
+        <p class="lead">All ticket details at a glance</p>
+        <a id='BtnExport' class="btn btn-warning btn-md" style="float: left;">Export to excel</a>
+
+      </div>
+      <div style="float:right">
+        <label for="CountHolder">Total Tickets : </label>
+        <span id="CountHolder"></span></t>
+      </div>      
+      <div id="tblTickets" class="table compact table-hover table-bordered table-responsive">
+
+      </div>      
+
+    </div>
+    <script src="/jquery/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="/tabulator/dist/js/tabulator.min.js"></script>
+    <script src="/tabulator/dist/js/jquery_wrapper.min.js"></script>
+    <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script src='/resources/TabulatorJSHelpers'></script>
+    <script src='/resources/HelperMethods'></script>
+    <script src='/resources/TicketListJS'></script>
+    
+  </body>
 
 </html>

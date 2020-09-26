@@ -16,7 +16,7 @@ router.get('/TicketListJS', function (req, res) {
     });
 });
 
-router.get('/IndexJS', function (req, res) {
+router.get('/AddTicketJS', function (req, res) {
     fs.readFile(__dirname + "/JS/" + "addticket.js", 'utf8', function (err, data) {
         res.end(data);
     });
@@ -24,6 +24,12 @@ router.get('/IndexJS', function (req, res) {
 
 router.get('/StatsJS', function (req, res) {
     fs.readFile(__dirname + "/JS/" + "statistics.js", 'utf8', function (err, data) {
+        res.end(data);
+    });
+});
+
+router.get('/TabulatorJSHelpers', function (req, res) {
+    fs.readFile(__dirname + "/JS/" + "tabulatorhelpers.js", 'utf8', function (err, data) {
         res.end(data);
     });
 });
