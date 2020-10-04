@@ -28,7 +28,7 @@ app.post('/InsertToMongo', jsonParser, (req, res) => {
     mongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         var dbo = db.db("EasyTicket");
-        //var myobj = { name: name, age : age };
+        
         dbo.collection("Tickets").insertOne(myobj, function (err, res) {
             if (err) throw err;
             console.log("1 document inserted");

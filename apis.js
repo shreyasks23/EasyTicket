@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require("body-parser");
-const fs = require("fs");
 const mongoClient = require("mongodb").MongoClient;
 
 const router = express.Router();
