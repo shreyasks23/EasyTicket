@@ -39,11 +39,11 @@
                     This will enable support executives to easily enter ticket details and manage them in single place
                 </p>
             </div>
-            <!-- <form id="SubmitForm"> -->
+            <form id="SubmitForm">
                 <div class="row">
                     <div class="form-group col-4">
                         <label class="form-label" for="DDLProjectName">Project : </label>
-                        <select class="form-control" id="DDLProjectName">
+                        <select class="form-control" id="DDLProjectName" name="ProjectName">
                             <option value="" disabled selected>Select Project</option>
                             <option>GMAC</option>
                             <option>OUPI</option>
@@ -53,7 +53,8 @@
                     </div>
                     <div class="form-group col-3">
                         <label class="form-label" for="DDLTicketType">Type : </label>
-                        <select class="form-control" id="DDLTicketType" placeholder="Select Type">
+                        <select class="form-control" id="DDLTicketType" name="TicketType">
+                            <option value="" disabled selected>Select Tracker</option>
                             <option>Service Request</option>
                             <option>Incident</option>
                             <option>Bug</option>
@@ -65,28 +66,32 @@
                     </div>
 
                     <div class="form-group col-3">
-                        <label for="TBTicketID">Ticket ID : </label> <input id="TBTicketID" type="text"
-                            placeholder="Enter Ticket ID" class="form-control">
+                        <label for="TBTicketID">Ticket ID : </label>
+                         <input id="TBTicketID" type="text" placeholder="Enter Ticket ID"
+                          class="form-control" name="TicketID">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="TBSubject">Subject : </label> <input id="TBSubject" type="text"
+                    <label for="TBSubject">Subject : </label>
+                     <input id="TBSubject" type="text" name="Subject"
                         placeholder="Enter ticket Title" class="form-control"  />
                 </div>
                 <div class="row">
                     <div class="form-group col-6">
-                        <label for="TBReceivedDate">Received ON :</label><input id="TBReceivedDate" type="datetime"
+                        <label for="TBReceivedDate">Received ON :</label>
+                        <input id="TBReceivedDate" type="datetime" name="ReceivedDate"
                             placeholder="Enter Received time" class="form-control" >
                     </div>
                     <div class="form-group col-6">
-                        <label for="TBResolvedDate">Resolved ON : </label><input id="TBResolvedDate" type="datetime"
+                        <label for="TBResolvedDate">Resolved ON : </label>
+                        <input id="TBResolvedDate" type="datetime" name="ResolvedDate"
                             placeholder="Enter Resolved time" class="form-control">
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-3">
                         <label for="DDLStatus">Status : </label>
-                        <select class="form-control" id="DDLStatus">
+                        <select class="form-control" id="DDLStatus" name="Status">
                             <option>New</option>
                             <option>In Progress</option>
                             <option>Resolved</option>
@@ -95,7 +100,7 @@
                     </div>
                     <div class="form-group col-4">
                         <label for="DDLPriority">Priority : </label>
-                        <select class="form-control" id="DDLPriority">
+                        <select class="form-control" id="DDLPriority" name="Priority">
                             <option>P1 - Critical</option>
                             <option>P2 - High</option>
                             <option>P3 - Medium</option>
@@ -104,7 +109,7 @@
                     </div>
                     <div class="form-group col-4">
                         <label for="DDLSeverity">Severity : </label>
-                        <select class="form-control" id="DDLSeverity">
+                        <select class="form-control" id="DDLSeverity" name="Severity">
                             <option>P1 - Critical</option>
                             <option>P2 - High</option>
                             <option>P3 - Medium</option>
@@ -115,7 +120,7 @@
                 <div class="row">
                     <div class="form-group col-4">
                         <label for="DDLHandledBy">Handled By : </label>
-                        <select class="form-control" id="DDLHandledBy">
+                        <select class="form-control" id="DDLHandledBy" name="HandledBy">
                             <option>Antony</option>
                             <option>Sheethal</option>
                             <option>Samatha</option>
@@ -127,7 +132,8 @@
                     </div>
                     <div class="form-group col-6">
                         <label for="TASummary">Summary : </label>
-                        <textarea id="TASummary" class="form-control" placeholder="Enter more details"></textarea>
+                        <textarea id="TASummary" class="form-control" name="Summary"
+                        placeholder="Enter more details"></textarea>
                     </div>
                 </div>
                 <div class="d-flex justify-content-around border-top p-2">
@@ -136,7 +142,7 @@
                     <button id="BtnClear" class="btn btn-outline-danger btn-lg" role="button"
                         style="float: right;">Clear</button>
                 </div>
-            <!-- </form> -->
+            </form>
         </div>
 
     </body>
