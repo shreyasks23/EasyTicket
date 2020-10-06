@@ -1,21 +1,17 @@
 $(function () {
-    let Tickets = [];
-    let Count = 0;
+    let Tickets = [];    
 
     $.ajax({
         type: 'GET',
-        url: '/apis/AllTickets',
-        success: (res) => {
-            console.log(res);
-            Tickets = res;
-            //Count = res.Count;
-        },
-        async: false
-    });
-    let ChartObj = GetTicketCountTypeWise(Tickets);
-    //console.log(ChartObj);
-    CreatePieChart("pie", ChartObj.ChartData, ChartObj.labels, 'myChart');
-    CreateRadarChart(Tickets);
+        url: '/apis/AllTickets'       
+    }).done((res) => {
+        Tickets = res;
+        let ChartObj = GetTicketCountTypeWise(res);
+        CreatePieChart("pie", ChartObj.ChartData, ChartObj.labels, 'myChart');
+        CreateRadarChart(res);
+    }).fail((err) => {
+        console.log(err);
+    });    
 
     $("#DDLProjectName").on('change', () => {
 
@@ -47,9 +43,7 @@ $(function () {
         }
         let ChartObj = GetTicketCountTypeWise(FilteredTickets);
         CreatePieChart("pie", ChartObj.ChartData, ChartObj.labels, 'myChart');
-    });
-
-    //GetTicketCountExecutiveWise(Tickets);
+    });   
 
     $("#DDLExecutiveName").on('change', () => {
         let ExecutiveName = $("#DDLExecutiveName").val();
@@ -92,52 +86,10 @@ $(function () {
         }
 
         let ChartObj = GetTicketCountTypeWise(FilteredTicketsExecutiveWise);
-        CreateChart("bar", ChartObj.ChartData, ChartObj.labels, 'myChart2');
-        //console.log(ChartObj);
-        // let ChartObj = GetTicketCountExecutiveWise(FilteredTicketsExecutiveWise);
-        // //console.log(ChartObj);
-        // CreateChart("bar", ChartObj.ChartData, ChartObj.Labels , 'myChart2');
+        CreateChart("bar", ChartObj.ChartData, ChartObj.labels, 'myChart2');        
     });
 
 });
-
-function GetTicketCountTypeWise(ticketList) {
-
-    let SRCount = 0, BGCount = 0, QACount = 0, INCount = 0,
-        IMCount = 0, CRCount = 0, STCount = 0;
-
-    ticketList.forEach((val, index) => {
-
-        if (val.TicketType == 'Question/Query') {
-            QACount++;
-        }
-        else if (val.TicketType == 'Service Request') {
-            SRCount++;
-        }
-        else if (val.TicketType == 'Bug') {
-            BGCount++;
-        }
-        else if (val.TicketType == 'Incident') {
-            INCount++;
-        }
-        else if (val.TicketType == 'Story') {
-            STCount++;
-        }
-        else if (val.TicketType == 'Improvement') {
-            IMCount++;
-        }
-        else if (val.TicketType == 'Change Request') {
-            CRCount++;
-        }
-    });
-    let ChartObj = {
-        'ChartData': [SRCount, QACount, BGCount, INCount, STCount, IMCount, CRCount],
-        'labels': ['Service Request', 'Question/Query', 'Bug', 'Incident', 'Story', 'Improvement', 'Change Request']
-    }
-
-    return ChartObj;
-
-}
 
 function CreateChart(type, ChartData, labels, elementID) {
     let ElementID = '#' + elementID;
@@ -272,15 +224,10 @@ function CreatePieChart(type, ChartData, labels, elementID) {
 }
 
 
-
 function CreateRadarChart(ChartData, elementID = 'MyChart', type = 'radar') {
+   
 
-
-    var label1 = "label1";
-    var label2 = "label2";
-    var label3 = "label3";
-
-    let GMAC, OUPI, CLP, IMU, GMACCount, OUPICount, CLPCount, IMUCount;
+    let GMAC, OUPI, CLP, IMU;
 
     GMAC = ChartData.filter((val) => {
         return val.Project == 'GMAC';
@@ -300,9 +247,7 @@ function CreateRadarChart(ChartData, elementID = 'MyChart', type = 'radar') {
     OUPICountObj = GetTicketCountTypeWise(OUPI);
     IMUCountObj = GetTicketCountTypeWise(IMU);
     CLPCountObj = GetTicketCountTypeWise(CLP);
-
-
-    //console.log(GMAC, OUPI, CLP, IMU);
+    
 
     let ElementID = '#' + elementID;
     let ctx = $(ElementID);
@@ -392,4 +337,44 @@ function GetTicketCountExecutiveWise(ticketList) {
     return ChartObj;
     //console.log(ticketCount);
 }
+
+
+function GetTicketCountTypeWise(ticketList) {
+
+    let SRCount = 0, BGCount = 0, QACount = 0, INCount = 0,
+        IMCount = 0, CRCount = 0, STCount = 0;
+
+    ticketList.forEach((val, index) => {
+
+        if (val.TicketType == 'Question/Query') {
+            QACount++;
+        }
+        else if (val.TicketType == 'Service Request') {
+            SRCount++;
+        }
+        else if (val.TicketType == 'Bug') {
+            BGCount++;
+        }
+        else if (val.TicketType == 'Incident') {
+            INCount++;
+        }
+        else if (val.TicketType == 'Story') {
+            STCount++;
+        }
+        else if (val.TicketType == 'Improvement') {
+            IMCount++;
+        }
+        else if (val.TicketType == 'Change Request') {
+            CRCount++;
+        }
+    });
+    let ChartObj = {
+        'ChartData': [SRCount, QACount, BGCount, INCount, STCount, IMCount, CRCount],
+        'labels': ['Service Request', 'Question/Query', 'Bug', 'Incident', 'Story', 'Improvement', 'Change Request']
+    }
+
+    return ChartObj;
+
+}
+
 

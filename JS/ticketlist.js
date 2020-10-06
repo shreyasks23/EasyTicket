@@ -101,6 +101,6 @@ var customMutator = (value, data, type, params, component) => {
     if (value == 'NaN:NaN:NaN')
         value = '00:00:00'
 
-    console.log(value);
+    //console.log(value);
     return value; //return the new value for the cell data.
 }
