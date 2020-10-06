@@ -56,7 +56,7 @@ router.get('/AllTickets', (req, res) => {
 
     mongoClient.connect(url, useUnifiedTopology).then((db) => {
         let dbo = db.db("EasyTicket");
-        dbo.collection("Tickets").find().toArray(function (err, result) {
+        dbo.collection("Tickets").find().sort({"_id" : -1}).toArray(function (err, result) {
             if (err) { console.log(err) };
             res.status("200").send(result);
         });
