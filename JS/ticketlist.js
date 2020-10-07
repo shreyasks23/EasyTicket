@@ -88,6 +88,23 @@ $(function () {
         var selectedRows = table.getSelectedRows();
         table.deleteRow(selectedRows);
     });
+    $("#TBSearch").on("keyup", () => {
+        console.log(table);
+        var filters = [];
+        var columns = table.getColumns();
+        var search = $("#TBSearch").val();
+
+        columns.forEach(function (column) {
+            filters.push({
+                field: column.getField(),
+                type: "like",
+                value: search,
+            });
+            console.log(filters);
+        });
+
+        table.setFilter([filters]);
+    })
 });
 
 var customMutator = (value, data, type, params, component) => {
