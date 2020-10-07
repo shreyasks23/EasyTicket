@@ -13,8 +13,6 @@ var jsonParser = bodyParser.json({
 const url = "mongodb://localhost:27017/";
 
 
-
-
 router.post('/AddTicket', jsonParser, (req, res) => {
     let ticket = req.body;
 
@@ -44,8 +42,7 @@ router.post('/CheckTicket', jsonParser, (req, res) => {
                     res.end("1");
                 } else {
                     res.end("0");
-                }
-                //console.log(data);
+                }                
             });
     }).catch((err) => {
         console.log(err);
@@ -85,8 +82,7 @@ router.post('/UpdateTicket', jsonParser, (req, res) => {
         let dbo = db.db("EasyTicket");
         dbo.collection("Tickets").updateOne(
             { 'TicketID': UpdatedTicket.TicketID },
-            TicketToUpdate).then((data) => {
-                console.log(data.result.nModified)
+            TicketToUpdate).then((data) => {                
                 res.status('201').send("Ticket updated");
             }).catch((err) => console.log(err));
     }).catch((err) => console.log(err));

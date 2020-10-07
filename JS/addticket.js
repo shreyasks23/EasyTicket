@@ -34,7 +34,8 @@ function postFormData() {
         Priority: $("#DDLPriority").val(),
         Severity: $("#DDLSeverity").val(),
         HandledBy: $("#DDLHandledBy").val(),
-        ResolutionTime: "00:00:00"
+        ResolutionTime: "00:00:00",
+        Summary: $("#TASummary").val()
     };
 
     $.ajax({

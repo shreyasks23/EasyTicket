@@ -3,11 +3,10 @@ $(function () {
     $.ajax({
         type: 'GET',
         url: '/apis/AllTickets',
-        success: (data) => {
-            //console.log(data);
+        success: (data) => {            
             let Tickets = data;
             let Count = data.length;
-            //console.log(Tickets);
+            
             $("#CountHolder").text(Count);
 
             table = new Tabulator("#tblTickets", {
@@ -35,7 +34,7 @@ $(function () {
                             console.log(err);
                         }
                     })
-                    //console.log(cell.getRow().getData());
+                    
                 },
 
                 rowContextMenu: rowMenu,
@@ -63,7 +62,7 @@ $(function () {
                     },
                     {
                         title: "Priority", field: "Priority", editor: "select", editorParams: {
-                            listItemFormatter: function (value, title) { //prefix all titles with the work "Mr"
+                            listItemFormatter: function (value, title) { 
                                 return title;
                             },
                             values: true, //create list of values from all values contained in this column
@@ -72,7 +71,8 @@ $(function () {
                         }
                     },
                     { title: "Resolution Time", field: "ResolutionTime", headerMenu: headerMenu, mutator: customMutator },
-                    { title: "Handled By", field: "HandledBy", editor: 'input' }
+                    { title: "Handled By", field: "HandledBy", editor: 'input' },
+                    { title: "Summary", field: "Summary", editor: 'input' }
                 ],
             });
 
@@ -88,13 +88,18 @@ $(function () {
         var selectedRows = table.getSelectedRows();
         table.deleteRow(selectedRows);
     });
-    $("#TBSearch").on("keyup", () => {
-        console.log(table);
-        var filters = [];
-        var columns = table.getColumns();
+    $("#TBSearch").on("keyup", () => {        
+        var filters = [];       
+        var SelectedColumns = [];
+        SelectedColumns.push(table.getColumn("Project"));
+        SelectedColumns.push(table.getColumn("TicketID"));
+        SelectedColumns.push(table.getColumn("TicketType"));
+        SelectedColumns.push(table.getColumn("Subject"));
+        SelectedColumns.push(table.getColumn("HandledBy"));        
+
         var search = $("#TBSearch").val();
 
-        columns.forEach(function (column) {
+        SelectedColumns.forEach(function (column) {
             filters.push({
                 field: column.getField(),
                 type: "like",
@@ -115,7 +120,7 @@ var customMutator = (value, data, type, params, component) => {
     //component - when the "type" argument is "edit", this contains the cell component for the edited cell, otherwise it is the column component for the column
 
     value = diff_minutes(data.ResolvedDate, data.RecievedDate);
-    if (value == 'NaN:NaN:NaN')
+    if (value == 'NaN:NaN:NaN' || value == "")
         value = '00:00:00'
 
     //console.log(value);
