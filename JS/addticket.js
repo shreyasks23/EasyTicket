@@ -1,22 +1,37 @@
 $(function () {
+
+    BindProjectNames();
+
     $('#SubmitForm').validate({
         rules: {
             ProjectName: "required",
-            TicketType : "required",
+            TicketType: "required",
             TicketID: "required",
             Subject: "required",
             ReceivedDate: "required"
         },
         messages: {
             ProjectName: "Invalid project name",
-            TicketType : "Invalid Tracker",
+            TicketType: "Invalid Tracker",
             TicketID: "Invalid Ticket ID",
             Subject: "Invalid Subject",
             ReceivedDate: "Invalid Received date"
         },
         submitHandler: postFormData
-    })
+    }); 
 });
+
+function BindProjectNames() {
+    let DDLProjectName = $("#DDLProjectName");
+
+    $.get("/apis/GetProjects").done((res) => {
+        let tag = "";
+        $.each(res, (i, val) => {
+            tag += '<option>' + val.Project + '</option>';
+        });
+        DDLProjectName.append(tag);
+    });
+}
 
 function postFormData() {   
     

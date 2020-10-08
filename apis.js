@@ -27,7 +27,34 @@ router.post('/AddTicket', jsonParser, (req, res) => {
     }).catch((err) => {
         console.log(err);
     })
+});
 
+router.post("/AddProject", jsonParser, (req, res) => {
+    let Project = req.body;
+
+    mongoClient.connect(url, useUnifiedTopology).then((db) => {
+        let dbo = db.db("EasyTicket");
+        dbo.collection("Projects").insertOne(Project, (err, result) => {
+            if (err) { console.log(err) };
+            console.log("Project created");
+            db.close();
+            res.sendStatus("200");
+        });
+    }).catch((err) => {
+        console.log(err);
+    });
+});
+
+router.get("/GetProjects", (req, res) => {
+    mongoClient.connect(url, useUnifiedTopology).then((db) => {
+        let dbo = db.db("EasyTicket");
+        dbo.collection("Projects").find().toArray((err, result) => {
+            if (err) { console.log(err) };
+            res.status("200").send(result);
+        });
+    }).catch((err) => {
+        console.log(err);
+    });
 });
 
 router.post('/CheckTicket', jsonParser, (req, res) => {
