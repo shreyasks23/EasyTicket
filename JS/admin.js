@@ -1,6 +1,7 @@
 $(function () {
 
-    BindProjectNames();        
+    BindProjectNames();    
+    BindExecutiveNames();
 
     $("#ProjectForm").validate({
         rules: {
@@ -12,16 +13,48 @@ $(function () {
         submitHandler: AddProjectData
     });
 
-
-    // $("#BtnAddProject").on("click", (e) => {
-    //     AddProjectData(TBProjectName, TAProjectDescription);
-    // });   
+    $("#MemberForm").validate({
+        rules: {
+            ExecutiveName: "required"
+        },
+        messages: {
+            ExecutiveName: "Invalid Executive Name"
+        },
+        submitHandler: AddExecutiveData
+    });
+      
 
 });
 
+function AddExecutiveData(form) {
+    console.log(form);
+
+    let TBExecutiveName = $("#TBExecutiveName");
+    let TAExecutiveDescription = $("#TAExecutiveDescription");
+
+    let Executive = {
+        Name: TBExecutiveName.val(),
+        Description: TAExecutiveDescription.val(),
+        CreatedDate : new Date()
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/apis/AddExecutive",
+        contentType:"application/json",
+        data: JSON.stringify(Executive)
+    }).done((res) => {
+        if (res == "OK") {
+            alert("Member added");
+            TBExecutiveName.val("");
+            TAExecutiveDescription.val("");
+            BindExecutiveNames();
+        }
+    }).catch((err) => { console.log(err) });
+}
+
 function AddProjectData(form) {
-    var dummy = form;
-    //console.log(form);
+    
     let TBProjectName = $("#TBProjectName");
     let TAProjectDescription = $("#TAProjectDescription");
     let Project = {
@@ -47,6 +80,8 @@ function AddProjectData(form) {
 }
 
 function BindProjectNames() {
+
+    $("#DDLProjectList option").remove();
     
     $.get("/apis/GetProjects").done((res) => {       
         let str = "";
@@ -55,5 +90,18 @@ function BindProjectNames() {
         });
         $("#DDLProjectList").append(str);
     });    
+}
+
+function BindExecutiveNames() {
+
+    $("#DDLExecutiveList option").remove();
+
+    $.get("/apis/GetExecutives").done((res) => {
+        let str = "";
+        $.each(res, (i, v) => {
+            str += "<option>" + v.Name + "</option>";
+        });
+        $("#DDLExecutiveList").append(str);
+    }).catch((err) => { console.log(err) });
 }
 

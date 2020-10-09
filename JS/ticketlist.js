@@ -72,7 +72,7 @@ $(function () {
                     },
                     { title: "Resolution Time", field: "ResolutionTime", headerMenu: headerMenu, mutator: customMutator },
                     { title: "Handled By", field: "HandledBy", editor: 'input' },
-                    { title: "Summary", field: "Summary", editor: 'input' }
+                    { title: "Summary", field: "Summary", editor: 'input',headerMenu: headerMenu }
                 ],
             });
 
