@@ -11,8 +11,8 @@ $(function () {
 
             table = new Tabulator("#tblTickets", {
                 tooltipsHeader: true,
-
                 tooltips: true,
+                paginationSizeSelector:true,
                 layout: "fitDataFill",
                 cellEdited: function (cell) {
                     let data = {};
@@ -33,8 +33,7 @@ $(function () {
                         error: (err) => {
                             console.log(err);
                         }
-                    })
-                    
+                    });                    
                 },
 
                 rowContextMenu: rowMenu,
@@ -75,7 +74,6 @@ $(function () {
                     { title: "Summary", field: "Summary", editor: 'input',headerMenu: headerMenu }
                 ],
             });
-
         },
         error: (err) => {
             console.log(err);

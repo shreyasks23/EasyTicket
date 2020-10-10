@@ -124,7 +124,8 @@ router.post('/UpdateTicket', jsonParser, (req, res) => {
             Priority: UpdatedTicket.Priority,
             Severity: UpdatedTicket.Severity,
             HandledBy: UpdatedTicket.HandledBy,
-            ResolutionTime: UpdatedTicket.ResolutionTime
+            ResolutionTime: UpdatedTicket.ResolutionTime,
+            Summary:UpdatedTicket.Summary
         }
     }
     mongoClient.connect(url, useUnifiedTopology).then((db) => {
