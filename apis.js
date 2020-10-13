@@ -27,7 +27,56 @@ router.post('/AddTicket', jsonParser, (req, res) => {
     }).catch((err) => {
         console.log(err);
     })
+});
 
+router.post("/AddProject", jsonParser, (req, res) => {
+    let Project = req.body;
+
+    mongoClient.connect(url, useUnifiedTopology).then((db) => {
+        let dbo = db.db("EasyTicket");
+        dbo.collection("Projects").insertOne(Project, (err, result) => {
+            if (err) { console.log(err) };
+            console.log("Project created");
+            db.close();
+            res.sendStatus("200");
+        });
+    }).catch((err) => { console.log(err); });
+});
+
+router.post("/AddExecutive", jsonParser, (req, res) => {
+    let Executive = req.body;
+    mongoClient.connect(url, useUnifiedTopology).then((db) => {
+        let dbo = db.db("EasyTicket");
+        dbo.collection("Executives").insertOne(Executive, (err, result) => {
+            if (err) { console.log(err) };
+            console.log(result.insertedCount);
+            console.log("Executive added");
+            db.close();
+            res.sendStatus("200");
+        });
+    }).catch((err) => { console.log(err) });
+});
+
+router.get("/GetProjects", (req, res) => {
+    mongoClient.connect(url, useUnifiedTopology).then((db) => {
+        let dbo = db.db("EasyTicket");
+        dbo.collection("Projects").find().toArray((err, result) => {
+            if (err) { console.log(err) };
+            res.status("200").send(result);
+            db.close();
+        });
+    }).catch((err) => { console.log(err); });
+});
+
+router.get("/GetExecutives", (req, res) => {
+    mongoClient.connect(url, useUnifiedTopology).then((db) => {
+        let dbo = db.db("EasyTicket");
+        dbo.collection("Executives").find().toArray((err, result) => {
+            if (err) { console.log(err) };
+            res.status("200").send(result);
+            db.close();
+        });
+    }).catch((err) => { console.log(err) });
 });
 
 router.post('/CheckTicket', jsonParser, (req, res) => {
@@ -53,14 +102,13 @@ router.get('/AllTickets', (req, res) => {
 
     mongoClient.connect(url, useUnifiedTopology).then((db) => {
         let dbo = db.db("EasyTicket");
-        dbo.collection("Tickets").find().sort({"_id" : -1}).toArray(function (err, result) {
+        dbo.collection("Tickets").find().sort({ "_id": -1 }).toArray(function (err, result) {
             if (err) { console.log(err) };
             res.status("200").send(result);
         });
     }).catch((err) => {
         console.log(err);
-    })
-
+    });
 });
 
 router.post('/UpdateTicket', jsonParser, (req, res) => {
@@ -75,7 +123,8 @@ router.post('/UpdateTicket', jsonParser, (req, res) => {
             Priority: UpdatedTicket.Priority,
             Severity: UpdatedTicket.Severity,
             HandledBy: UpdatedTicket.HandledBy,
-            ResolutionTime: UpdatedTicket.ResolutionTime
+            ResolutionTime: UpdatedTicket.ResolutionTime,
+            Summary:UpdatedTicket.Summary
         }
     }
     mongoClient.connect(url, useUnifiedTopology).then((db) => {

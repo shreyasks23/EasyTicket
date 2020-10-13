@@ -11,8 +11,8 @@ $(function () {
 
             table = new Tabulator("#tblTickets", {
                 tooltipsHeader: true,
-
                 tooltips: true,
+                paginationSizeSelector:true,
                 layout: "fitDataFill",
                 cellEdited: function (cell) {
                     let data = {};
@@ -33,8 +33,7 @@ $(function () {
                         error: (err) => {
                             console.log(err);
                         }
-                    })
-                    
+                    });                    
                 },
 
                 rowContextMenu: rowMenu,
@@ -72,10 +71,9 @@ $(function () {
                     },
                     { title: "Resolution Time", field: "ResolutionTime", headerMenu: headerMenu, mutator: customMutator },
                     { title: "Handled By", field: "HandledBy", editor: 'input' },
-                    { title: "Summary", field: "Summary", editor: 'input' }
+                    { title: "Summary", field: "Summary", editor: 'input',headerMenu: headerMenu }
                 ],
             });
-
         },
         error: (err) => {
             console.log(err);

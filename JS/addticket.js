@@ -1,25 +1,55 @@
 $(function () {
+
+    BindProjectNames();
+    BindExecutiveNames();
+
     $('#SubmitForm').validate({
         rules: {
             ProjectName: "required",
-            TicketType : "required",
+            TicketType: "required",
             TicketID: "required",
             Subject: "required",
             ReceivedDate: "required"
         },
         messages: {
             ProjectName: "Invalid project name",
-            TicketType : "Invalid Tracker",
+            TicketType: "Invalid Tracker",
             TicketID: "Invalid Ticket ID",
             Subject: "Invalid Subject",
             ReceivedDate: "Invalid Received date"
         },
         submitHandler: postFormData
-    })
+    });
+
+    $('#BtnClear').on('click', () => {
+        $("#DDLProjectName").val("");
+        $("#TBTicketID").val("");        
+        $("#TBSubject").val("");
+        $("#TBReceivedDate").val("");
+        $("#TBResolvedDate").val("");
+        $("#DDLStatus").val("");
+        $("#DDLTicketType").val("");
+        $("#DDLPriority").val("");
+        $("#DDLSeverity").val("");
+        $("#DDLHandledBy").val("");
+        $("#TASummary").val("");
+    });
 });
 
-function postFormData() {   
-    
+function BindProjectNames() {
+    let DDLProjectName = $("#DDLProjectName");
+
+    $.get("/apis/GetProjects").done((res) => {
+        let tag = "";
+        $.each(res, (i, val) => {
+            tag += '<option>' + val.Project + '</option>';
+        });
+        DDLProjectName.append(tag);
+    });
+}
+
+function postFormData() {
+
 
     var TicketID = $("#TBTicketID").val();
 
@@ -72,3 +102,16 @@ function postFormData() {
         alert(err);
     });
 }
+
+function BindExecutiveNames() {
+
+
+    $.get("/apis/GetExecutives").done((res) => {
+        let str = "";
+        $.each(res, (i, v) => {
+            str += "<option>" + v.Name + "</option>";
+        });
+        $("#DDLHandledBy").append(str);
+    }).catch((err) => { console.log(err) });
+}
+
