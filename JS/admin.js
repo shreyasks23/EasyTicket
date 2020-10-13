@@ -80,28 +80,14 @@ function AddProjectData(form) {
 }
 
 function BindProjectNames() {
-
-    $("#DDLProjectList option").remove();
-    
-    $.get("/apis/GetProjects").done((res) => {       
-        let str = "";
-        $.each(res, (i, v) => {
-            str += "<option>" + v.Project + "</option>";
-        });
-        $("#DDLProjectList").append(str);
-    });    
+    $("#DDLProjectList option").remove();      
+    BindProjectsToDDL($("#DDLProjectList")); 
 }
 
 function BindExecutiveNames() {
+    $("#DDLExecutiveList option").remove();    
+    BindExecutiveNamesToDDL($("#DDLExecutiveList"));
 
-    $("#DDLExecutiveList option").remove();
-
-    $.get("/apis/GetExecutives").done((res) => {
-        let str = "";
-        $.each(res, (i, v) => {
-            str += "<option>" + v.Name + "</option>";
-        });
-        $("#DDLExecutiveList").append(str);
-    }).catch((err) => { console.log(err) });
+    
 }
 

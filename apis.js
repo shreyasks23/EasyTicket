@@ -60,7 +60,7 @@ router.post("/AddExecutive", jsonParser, (req, res) => {
 router.get("/GetProjects", (req, res) => {
     mongoClient.connect(url, useUnifiedTopology).then((db) => {
         let dbo = db.db("EasyTicket");
-        dbo.collection("Projects").find().toArray((err, result) => {
+        dbo.collection("Projects").find().project({"Project":1,"_id":0}).toArray((err, result) => {
             if (err) { console.log(err) };
             res.status("200").send(result);
             db.close();
@@ -71,7 +71,10 @@ router.get("/GetProjects", (req, res) => {
 router.get("/GetExecutives", (req, res) => {
     mongoClient.connect(url, useUnifiedTopology).then((db) => {
         let dbo = db.db("EasyTicket");
-        dbo.collection("Executives").find().toArray((err, result) => {
+        dbo.collection("Executives").find({},
+            {
+                projection: { "Name": 1, "_id": 0 }
+            }).toArray((err, result) => {
             if (err) { console.log(err) };
             res.status("200").send(result);
             db.close();
@@ -91,7 +94,8 @@ router.post('/CheckTicket', jsonParser, (req, res) => {
                     res.end("1");
                 } else {
                     res.end("0");
-                }                
+                }
+                db.close();                
             });
     }).catch((err) => {
         console.log(err);
@@ -105,6 +109,60 @@ router.get('/AllTickets', (req, res) => {
         dbo.collection("Tickets").find().sort({ "_id": -1 }).toArray(function (err, result) {
             if (err) { console.log(err) };
             res.status("200").send(result);
+            db.close();
+        });
+    }).catch((err) => {
+        console.log(err);
+    });
+});
+
+router.get("/GetSelectedTicketDetails", (req, res) => {
+    let query = req.query;
+    //console.log(query);
+    mongoClient.connect(url, useUnifiedTopology).then((db) => {
+        let dbo = db.db("EasyTicket");
+        dbo.collection("Tickets").find(query, {
+            projection: {
+                Project: 1,
+                TicketID: 1,
+                Status: 1,
+                TicketType: 1,
+                HandledBy: 1,
+                _id: 0,
+            }
+        }).toArray(function (err, result) {
+            if (err) { console.log(err) };
+            res.status("200").send(result);
+            db.close();
+        });
+    }).catch((err) => {
+        console.log(err);
+    });
+});
+
+router.get("/GetTicketDetails", (req, res) => {
+    let query = req.query;
+    var pipeline = [
+        {
+          '$match': {
+            'Project': query.Project
+          }
+        }, {
+          '$group': {
+            '_id': '$TicketType', 
+            'Count': {
+              '$sum': 1
+            }
+          }
+        }
+      ]
+    //console.log(query);
+    mongoClient.connect(url, useUnifiedTopology).then((db) => {
+        let dbo = db.db("EasyTicket");
+        dbo.collection("Tickets").aggregate(pipeline).toArray(function (err, result) {
+            if (err) { console.log(err) };
+            res.status("200").send(result);
+            db.close();
         });
     }).catch((err) => {
         console.log(err);
@@ -133,6 +191,7 @@ router.post('/UpdateTicket', jsonParser, (req, res) => {
             { 'TicketID': UpdatedTicket.TicketID },
             TicketToUpdate).then((data) => {                
                 res.status('201').send("Ticket updated");
+                db.close();
             }).catch((err) => console.log(err));
     }).catch((err) => console.log(err));
    

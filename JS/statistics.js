@@ -1,46 +1,44 @@
 $(function () {
-    let Tickets = [];    
+    let Tickets = [];         
+    let ProjectNames = [];
+    let ExecutiveNames = []; 
 
-    $.ajax({
-        type: 'GET',
-        url: '/apis/AllTickets'       
-    }).done((res) => {
+
+    BindProjectsToDDL($("#DDLProjectName"));
+    BindExecutiveNamesToDDL($("#DDLExecutiveName"));       
+
+
+    $.get("/apis/GetExecutives").then((res) => {
+        Executives = res;
+        res.forEach((v, i) => {
+            ExecutiveNames.push(v.Name);
+        }); 
+    });
+
+    $.get("/apis/GetProjects").then((res) => {
+        Projects = res;
+        res.forEach((v, i) => {            
+            ProjectNames.push(v.Project);
+        });
+    });  
+
+    $.get('/apis/GetSelectedTicketDetails').then((res) => {
         Tickets = res;
         let ChartObj = GetTicketCountTypeWise(res);
         CreatePieChart("pie", ChartObj.ChartData, ChartObj.labels, 'myChart');
-        CreateRadarChart(res);
-    }).fail((err) => {
-        console.log(err);
+         CreateRadarChart(res);
     });    
 
-    $("#DDLProjectName").on('change', () => {
-        //needs changing
+    $("#DDLProjectName").on('change', () => {    
+        
         let ProjectName = $("#DDLProjectName").val();
         let FilteredTickets = [];
 
-        if (ProjectName == 'All') {
-            FilteredTickets = Tickets;
-        }
-        else if (ProjectName == 'GMAC') {
-            FilteredTickets = Tickets.filter((val) => {
-                return val.Project == 'GMAC';
-            });
-        }
-        else if (ProjectName == 'OUPI') {
-            FilteredTickets = Tickets.filter((val) => {
-                return val.Project == 'OUPI';
-            });
-        }
-        else if (ProjectName == 'IMU') {
-            FilteredTickets = Tickets.filter((val) => {
-                return val.Project == 'IMU';
-            });
-        }
-        else if (ProjectName == 'CLP') {
-            FilteredTickets = Tickets.filter((val) => {
-                return val.Project == 'CLP';
-            });
-        }
+        
+        FilteredTickets = Tickets.filter((val) => {
+            return val.Project == ProjectName;
+        });
+        
         let ChartObj = GetTicketCountTypeWise(FilteredTickets);
         CreatePieChart("pie", ChartObj.ChartData, ChartObj.labels, 'myChart');
     });   
@@ -48,42 +46,9 @@ $(function () {
     $("#DDLExecutiveName").on('change', () => {
         let ExecutiveName = $("#DDLExecutiveName").val();
         let FilteredTicketsExecutiveWise = [];
-
-        if (ExecutiveName == "Shreyas") {
-            FilteredTicketsExecutiveWise = Tickets.filter((val) => {
-                return val.HandledBy == "Shreyas";
-            });
-        }
-        else if (ExecutiveName == "Antony") {
-            FilteredTicketsExecutiveWise = Tickets.filter((val) => {
-                return val.HandledBy == "Antony";
-            });
-        }
-        else if (ExecutiveName == "Samatha") {
-            FilteredTicketsExecutiveWise = Tickets.filter((val) => {
-                return val.HandledBy == "Samatha";
-            });
-        }
-        else if (ExecutiveName == "Sheethal") {
-            FilteredTicketsExecutiveWise = Tickets.filter((val) => {
-                return val.HandledBy == "Sheethal";
-            });
-        }
-        else if (ExecutiveName == "Ajay") {
-            FilteredTicketsExecutiveWise = Tickets.filter((val) => {
-                return val.HandledBy == "Ajay";
-            });
-        }
-        else if (ExecutiveName == "Dhanush") {
-            FilteredTicketsExecutiveWise = Tickets.filter((val) => {
-                return val.HandledBy == "Dhanush";
-            });
-        }
-        else if (ExecutiveName == "Rony") {
-            FilteredTicketsExecutiveWise = Tickets.filter((val) => {
-                return val.HandledBy == "Rony";
-            });
-        }
+        FilteredTicketsExecutiveWise = Tickets.filter((val) => {
+            return val.HandledBy == ExecutiveName;
+        });       
 
         let ChartObj = GetTicketCountTypeWise(FilteredTicketsExecutiveWise);
         CreateChart("bar", ChartObj.ChartData, ChartObj.labels, 'myChart2');        
@@ -224,8 +189,15 @@ function CreatePieChart(type, ChartData, labels, elementID) {
 }
 
 //needs changing
-function CreateRadarChart(ChartData, elementID = 'MyChart', type = 'radar') {
-   
+function CreateRadarChart(ChartData, elementID = 'MyChart', type = 'radar') {    
+    
+    
+    $.get("/apis//GetTicketDetails?Project=GMAC").then((res) => {
+        console.log(res);
+        res.forEach((v) => {
+            ///console.log(v);
+        });
+    });
 
     let GMAC, OUPI, CLP, IMU;
 
@@ -257,22 +229,22 @@ function CreateRadarChart(ChartData, elementID = 'MyChart', type = 'radar') {
             labels: ['Service Request', 'Question/Query', 'Bug', 'Incident', 'Story', 'Improvement', 'Change Request'],
             datasets: [{
                 label: "GMAC",
-                backgroundColor: 'rgba(255, 99, 71, 0.6)',
-                borderColor: 'rgba(255, 99, 71, 0.6)',
-                pointBackgroundColor: 'rgba(255, 99, 71, 1)',
+                backgroundColor: 'rgba(255, 99, 71, 0.3)',
+                borderColor: 'rgba(255, 99, 71, 1)',
+                pointBackgroundColor: 'rgba(255, 99, 71, 0.7)',
                 data: GMACCountObj.ChartData,
                 notes: ["This is from GMAC"]
             }, {
                 label: "OUPI",
-                backgroundColor: 'rgba(219, 124, 12, 0.4)',
-                borderColor: 'rgba(219, 124, 12, 0.4)',
+                backgroundColor: 'rgba(219, 124, 12, 0.3)',
+                borderColor: 'rgba(219, 124, 12, 0.7)',
                 pointBackgroundColor: 'rgba(219, 124, 12, 1)',
                 data: OUPICountObj.ChartData,
                 notes: ["This is from OUPI"]
             }, {
                 label: "CLP",
-                backgroundColor: 'rgba(90, 124, 12, 0.5)',
-                borderColor: 'rgba(90, 124, 12, 0.5)',
+                backgroundColor: 'rgba(90, 124, 12, 0.3)',
+                borderColor: 'rgba(90, 124, 12,0.7)',
                 pointBackgroundColor: 'rgba(90, 124, 12, 1)',
                 data: CLPCountObj.ChartData,
                 notes: ["Data from CLP"]
@@ -280,9 +252,8 @@ function CreateRadarChart(ChartData, elementID = 'MyChart', type = 'radar') {
             },
             {
                 label: "IMU",
-
-                backgroundColor: 'rgba(90, 57, 32, 0.5)',
-                borderColor: 'rgba(90, 57, 32, 0.5)',
+                backgroundColor: 'rgba(90, 57, 32, 0.3)',
+                borderColor: 'rgba(90, 57, 32, 0.7)',
                 pointBackgroundColor: 'rgba(90, 57, 32, 1)',
                 data: IMUCountObj.ChartData,
                 notes: ["Data from IMU"]
@@ -345,7 +316,7 @@ function GetTicketCountTypeWise(ticketList) {
     let SRCount = 0, BGCount = 0, QACount = 0, INCount = 0,
         IMCount = 0, CRCount = 0, STCount = 0;
 
-    ticketList.forEach((val, index) => {
+    ticketList.forEach((val) => {
 
         if (val.TicketType == 'Question/Query') {
             QACount++;

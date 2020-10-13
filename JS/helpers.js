@@ -18,6 +18,31 @@ function diff_minutes(dt2, dt1) {
     return hh + ":" + mm + ":" + ss;
 }
 
+function BindProjectsToDDL(selector) {    
+
+    $.get("/apis/GetProjects").done((res) => {
+        let tag = "";
+        $.each(res, (i, val) => {
+            tag += '<option>' + val.Project + '</option>';
+        });
+        selector.append(tag);
+    });
+}
+
+
+function BindExecutiveNamesToDDL(selector) {
+
+  $("#DDLExecutiveList option").remove();
+
+  $.get("/apis/GetExecutives").done((res) => {
+      let str = "";
+      $.each(res, (i, v) => {
+          str += "<option>" + v.Name + "</option>";
+      });
+      selector.append(str);
+  }).catch((err) => { console.log(err) });
+}
+
 //#region depricated methods
 
 function Search(inputElement , tableName , SelectedIndex) {
