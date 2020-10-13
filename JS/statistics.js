@@ -14,7 +14,7 @@ $(function () {
     });    
 
     $("#DDLProjectName").on('change', () => {
-
+        //needs changing
         let ProjectName = $("#DDLProjectName").val();
         let FilteredTickets = [];
 
@@ -223,7 +223,7 @@ function CreatePieChart(type, ChartData, labels, elementID) {
     });
 }
 
-
+//needs changing
 function CreateRadarChart(ChartData, elementID = 'MyChart', type = 'radar') {
    
 
@@ -304,6 +304,7 @@ function CreateRadarChart(ChartData, elementID = 'MyChart', type = 'radar') {
     });
 }
 
+//needs changing
 function GetTicketCountExecutiveWise(ticketList) {
     let shr = 0, sam = 0, ant = 0, ron = 0, dan = 0, ajay = 0, sht = 0;
     ticketList.forEach((v) => {
@@ -338,7 +339,7 @@ function GetTicketCountExecutiveWise(ticketList) {
     //console.log(ticketCount);
 }
 
-
+//needs changing
 function GetTicketCountTypeWise(ticketList) {
 
     let SRCount = 0, BGCount = 0, QACount = 0, INCount = 0,

@@ -1,6 +1,7 @@
 $(function () {
 
     BindProjectNames();
+    BindExecutiveNames();
 
     $('#SubmitForm').validate({
         rules: {
@@ -18,7 +19,21 @@ $(function () {
             ReceivedDate: "Invalid Received date"
         },
         submitHandler: postFormData
-    }); 
+    });
+
+    $('#BtnClear').on('click', () => {
+        $("#DDLProjectName").val("");
+        $("#TBTicketID").val("");        
+        $("#TBSubject").val("");
+        $("#TBReceivedDate").val("");
+        $("#TBResolvedDate").val("");
+        $("#DDLStatus").val("");
+        $("#DDLTicketType").val("");
+        $("#DDLPriority").val("");
+        $("#DDLSeverity").val("");
+        $("#DDLHandledBy").val("");
+        $("#TASummary").val("");
+    });
 });
 
 function BindProjectNames() {
@@ -33,8 +48,8 @@ function BindProjectNames() {
     });
 }
 
-function postFormData() {   
-    
+function postFormData() {
+
 
     var TicketID = $("#TBTicketID").val();
 
@@ -87,3 +102,16 @@ function postFormData() {
         alert(err);
     });
 }
+
+function BindExecutiveNames() {
+
+
+    $.get("/apis/GetExecutives").done((res) => {
+        let str = "";
+        $.each(res, (i, v) => {
+            str += "<option>" + v.Name + "</option>";
+        });
+        $("#DDLHandledBy").append(str);
+    }).catch((err) => { console.log(err) });
+}
+
