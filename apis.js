@@ -142,20 +142,36 @@ router.get("/GetSelectedTicketDetails", (req, res) => {
 
 router.get("/GetTicketDetails", (req, res) => {
     let query = req.query;
-    var pipeline = [
-        {
-          '$match': {
-            'Project': query.Project
-          }
-        }, {
-          '$group': {
-            '_id': '$TicketType', 
-            'Count': {
-              '$sum': 1
+    var pipeline;
+    let $match= {
+          'Project': query.Project
+    };
+    if ($match.Project != undefined) {
+        pipeline = [
+            {
+                $match
+            }, {
+                '$group': {
+                    '_id': '$TicketType',
+                    'Count': {
+                        '$sum': 1
+                    }
+                }
             }
-          }
-        }
-      ]
+        ]
+    }
+    else {
+        pipeline = [
+            {
+              '$group': {
+                '_id': '$TicketType', 
+                'Count': {
+                  '$sum': 1
+                }
+              }
+            }
+          ]
+    }
     //console.log(query);
     mongoClient.connect(url, useUnifiedTopology).then((db) => {
         let dbo = db.db("EasyTicket");

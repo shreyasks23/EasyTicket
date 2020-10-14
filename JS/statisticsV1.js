@@ -1,14 +1,25 @@
 $(function () {
-    let DDLProjectName = $("#DDLProjectName");
-    let ctx = $("#Chart1");
-    let Chart1 = new Chart(ctx, {
+
+    //global ref variables
+    let DDLProjectName = $("#DDLProjectName");    
+    let Chart1 = new Chart($("#Chart1"), {
         type: "bar"
-    });
-    let ctx2 = $("#Chart2");
-    let Chart2 = new Chart(ctx2, {
-        type: "line"
+    });    
+    let Chart2 = new Chart($("#Chart2"), {
+        type: "pie"
     });
 
+    $.getJSON("/apis/GetTicketDetails").done((res) => {
+        let labels = [];
+        let x = [];
+        x = res.map((v) => {
+            labels.push(v._id);
+            return v.Count;
+        });
+        console.log(x, labels);
+        CreateDynamicChart(Chart1, x, labels);
+        CreateDynamicChart(Chart2, x, labels);
+    });
     BindProjectsToDDL(DDLProjectName);
 
     DDLProjectName.on("change", () => {
@@ -24,26 +35,80 @@ $(function () {
                 labels.push(v._id);
                 return v.Count;
             });
-            console.log(x,labels);            
-            CreateDynamicChart(Chart1, x , labels);
-        });
+            console.log(x, labels);
+            CreateDynamicChart(Chart1, x, labels);
+            CreateDynamicChart(Chart2, x, labels);
 
-         
+        });
     });
 });
 
-function CreateDynamicChart(chartObj , dataset , labels) {
-    
-    console.log(chartObj);    
+function CreateDynamicChart(chartObj, dataset, labels) {
 
-    let totalTickets = dataset.reduce((a, v) => {
-        return a += v;
-    });
-    
-    chartObj.data.labels = labels;    
+    console.log(chartObj);
+    let xAxes;
+    let yAxes;
+
+    if (chartObj.config.type == 'bar' || chartObj.config.type == 'line') {
+
+        xAxes = [{
+            display: true,
+            gridLines: {
+                display: true
+            },
+
+        }];
+        yAxes = [{
+            display: true,
+            gridLines: {
+                display: false
+            },
+            ticks: {
+                beginAtZero: true,
+                stepSize: 1
+            }
+        }];
+    }
+    else if(chartObj.config.type == 'pie'){
+        xAxes = [{
+            display: false,
+            gridLines: {
+                display: false
+            },
+
+        }];
+        yAxes = [{
+            display: false,
+            gridLines: {
+                display: false
+            },
+            ticks: {
+                beginAtZero: true,
+                stepSize: 1
+            }
+        }];
+    }
+
+    let totalTickets;
+    let RecDataSet;
+
+
+
+
+    if (dataset.length > 0) {
+        totalTickets = dataset.reduce((a, v) => {
+            return a += v;
+        });
+        RecDataSet = dataset;
+    } else {
+        totalTickets = 0;
+        RecDataSet = [];
+    }
+
+    chartObj.data.labels = labels;
 
     let chartData = {
-        data: dataset,
+        data: RecDataSet,
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -53,7 +118,9 @@ function CreateDynamicChart(chartObj , dataset , labels) {
             'rgba(255, 159, 64, 0.2)'
         ]
     };
-    chartObj.options = {       
+    
+
+    chartObj.options = {
         events: ['click'],
         title: {
             display: true,
@@ -66,26 +133,11 @@ function CreateDynamicChart(chartObj , dataset , labels) {
             }
         },
         scales: {
-            xAxes: [{
-                display: true,
-                gridLines: {
-                    display: true
-                },
-
-            }],
-            yAxes: [{
-                display: true,
-                gridLines: {
-                    display: false
-                },
-                ticks: {
-                    beginAtZero: true,
-                    stepSize: 1
-                }
-            }]
+            xAxes : xAxes,            
+            yAxes: yAxes
         }
     };
-    chartObj.data.datasets[0]= (chartData);
+    chartObj.data.datasets[0] = (chartData);
     chartObj.update();
     console.log(chartObj);
 }
