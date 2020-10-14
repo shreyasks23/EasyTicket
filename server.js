@@ -41,6 +41,9 @@ app.get('/Admin',  (req, res) =>{
     res.sendFile(__dirname + "/views" + "/admin.html");
     
 });
+app.get('/StatsV1',  (req, res) =>{
+    res.sendFile(__dirname + "/views" + "/statisticsV1.html");    
+});
 
 //server initialization
 const server = app.listen(8081, function () {    

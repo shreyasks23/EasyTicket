@@ -18,6 +18,10 @@ router.get('/StatsJS', function (req, res) {
     res.sendFile(__dirname + "/JS/" + "statistics.js");    
 });
 
+router.get('/StatsV1JS', function (req, res) {
+    res.sendFile(__dirname + "/JS/" + "statisticsV1.js");    
+});
+
 router.get('/AdminJS', function (req, res) {
     res.sendFile(__dirname + "/JS/" + "admin.js");    
 });
